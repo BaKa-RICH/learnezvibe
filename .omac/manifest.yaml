@@ -3,7 +3,7 @@ meta:
   reconcile_audit:
     schema: omac.reconcile-audit/v1
     last_full_scan_at: '2026-08-16T10:44:22Z'
-    completed_interval_ticks: 7
+    completed_interval_ticks: 8
 nodes:
 - id: node1
   worker: 代码评审与开发助手
