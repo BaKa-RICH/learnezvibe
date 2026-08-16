@@ -1,0 +1,20 @@
+# omac 配置 — 由用户手写(跳过交互向导)
+# 告诉 omac:连哪个平台、项目归哪个仓库、用哪些 agent 当什么角色
+
+engine: multica
+workspace: 466eb7c0-2554-45e6-91a8-6890663bb359   # Multica workspace id
+project: 6e64ba4b-8856-4ac2-aa24-a47b9169ae71       # learnzvibe project id(仓库已挂)
+
+roles:
+  workers:
+    - 代码评审与开发助手        # codex agent,当执行者
+  reviewers:
+    - 代码评审与开发助手        # 同一个 agent 当评审者(MVP 阶段够用)
+
+defaults:
+  max_parallel: 1              # 顺序节点,并发 1
+  poll_interval: 15
+
+workflow:
+  human_in_loop: false         # 手写 manifest,跳过 plan 人工确认
+  review: true
