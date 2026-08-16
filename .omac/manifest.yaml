@@ -1,0 +1,41 @@
+meta:
+  title: 第一个最小流程
+  reconcile_audit:
+    schema: omac.reconcile-audit/v1
+    last_full_scan_at: '2026-08-16T10:21:21Z'
+    completed_interval_ticks: 0
+nodes:
+- id: node1
+  worker: 代码评审与开发助手
+  blocked_by: []
+  work_item_id: 53b5dbfb-6fc2-47d2-b0b9-cc6884d91f65
+  status: blocked
+  contract:
+    objective: 在仓库根目录生成 report.md,用 3-5 句话总结多卡 agent 平台的学习进展
+    non_goals:
+    - 不要修改仓库里的其他文件
+    verification_commands:
+    - python -c "import os,sys;sys.exit(0 if os.path.exists('report.md') and os.path.getsize('report.md')>0
+      else 1)"
+    integration_gates:
+    - name: gate1
+      layer: L1
+      delivery_goal: report.md 已生成
+      source_of_truth:
+      - report.md
+      covers:
+      - report
+      acceptance_refs:
+      - report.md 存在且内容非空
+      commands:
+      - python -c "import os,sys;sys.exit(0 if os.path.exists('report.md') and os.path.getsize('report.md')>0
+        else 1)"
+      required_metrics: {}
+      artifacts:
+      - report.md
+    pr_base: main
+    acceptance:
+    - report.md 存在且内容非空
+    source_of_truth:
+    - report.md
+  recovery_marker: true
