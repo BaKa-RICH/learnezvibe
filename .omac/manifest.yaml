@@ -3,13 +3,13 @@ meta:
   reconcile_audit:
     schema: omac.reconcile-audit/v1
     last_full_scan_at: '2026-08-16T10:21:21Z'
-    completed_interval_ticks: 0
+    completed_interval_ticks: 1
 nodes:
 - id: node1
   worker: 代码评审与开发助手
   blocked_by: []
-  work_item_id: 53b5dbfb-6fc2-47d2-b0b9-cc6884d91f65
-  status: blocked
+  work_item_id: b90018b3-064c-484a-b540-2b37d952aa84
+  status: in_progress
   contract:
     objective: 在仓库根目录生成 report.md,用 3-5 句话总结多卡 agent 平台的学习进展
     non_goals:
