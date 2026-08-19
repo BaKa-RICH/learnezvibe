@@ -1,0 +1,128 @@
+{
+  "schema": "b3.config-snapshot/v1",
+  "captured_at": "2026-08-19T17:43:00+08:00",
+  "status": "observed-config-plus-frozen-target",
+  "workspace": {
+    "id": "466eb7c0-2554-45e6-91a8-6890663bb359",
+    "name": "weekly_progress",
+    "project_id": "6e64ba4b-8856-4ac2-aa24-a47b9169ae71",
+    "project_title": "learnzvibe",
+    "server_url": "https://api.multica.ai",
+    "cli_daemon_status": "stopped",
+    "execution_surface": "Desktop daemon only; do not start a second CLI daemon"
+  },
+  "runtimes": [
+    {
+      "id": "82d89dc0-7821-4e62-8708-9ca861bd703a",
+      "provider": "codex",
+      "name": "Codex (LAPTOP-EMQRSSD2)",
+      "status": "online",
+      "last_seen_at": "2026-08-19T09:41:22Z",
+      "launched_by": "desktop",
+      "cli_version": "v0.4.26",
+      "assigned_roles": ["leader", "collect", "write", "review"]
+    }
+  ],
+  "squad": {
+    "id": "6e94e57b-9c9d-4380-9304-5b9d780112f1",
+    "name": "周报",
+    "description": "周报小队",
+    "leader": {
+      "id": "93b08860-2419-4b60-b01f-23225688f18d",
+      "name": "代码评审与开发助手",
+      "model": "gpt-5.6-terra",
+      "thinking_level": "high",
+      "runtime_id": "82d89dc0-7821-4e62-8708-9ca861bd703a"
+    },
+    "members": [
+      {
+        "id": "5e1d1f5b-ef9d-4757-8a1d-15ad24f42258",
+        "name": "weekly-collect",
+        "role": "collect",
+        "model": "gpt-5.6-terra",
+        "thinking_level": "medium",
+        "runtime_id": "82d89dc0-7821-4e62-8708-9ca861bd703a",
+        "description": "擅长资料收集、事实整理、结构化数据产出"
+      },
+      {
+        "id": "5f27f945-b329-47e5-9498-a643dc2fef37",
+        "name": "weekly-write",
+        "role": "write",
+        "model": "gpt-5.6-terra",
+        "thinking_level": "medium",
+        "runtime_id": "82d89dc0-7821-4e62-8708-9ca861bd703a",
+        "description": "擅长根据已有材料撰写周报，不修改上游原始数据"
+      },
+      {
+        "id": "f1657953-35f3-4abc-8ed8-083f0a8932fc",
+        "name": "weekly-review",
+        "role": "review",
+        "model": "gpt-5.6-terra",
+        "thinking_level": "low",
+        "runtime_id": "82d89dc0-7821-4e62-8708-9ca861bd703a",
+        "description": "擅长事实核对、结构检查和验收判断",
+        "invocation_target_count": 0,
+        "note": "private agent; owner-level A2A authorization must be smoke-tested before formal runs"
+      }
+    ]
+  },
+  "native_target": {
+    "issue_assignee": {
+      "type": "squad",
+      "squad_id": "6e94e57b-9c9d-4380-9304-5b9d780112f1",
+      "squad_name": "周报"
+    },
+    "dispatch": "leader自主拆解和派发；成员路由依据为 squad role 与固定共同任务正文"
+  },
+  "omac_observed_repository_manifest": {
+    "path": "D:\\agentlearn\\learnezvibe\\.omac\\weekly.yaml",
+    "sha256": "cd16c87697a26b27de1f1fc7d6383c852cba0d2d49fcf8371cdea45a2c3093ac",
+    "worker_mapping": {
+      "collect": "${WEEKLY_WORKER:-alice}",
+      "write": "${WEEKLY_WORKER:-alice}",
+      "review": "${WEEKLY_WORKER:-alice}"
+    },
+    "reviewer": "${WEEKLY_REVIEWER:-bob}",
+    "delivery_mode": "content",
+    "assessment": "does_not_yet_meet_b3_frozen_target"
+  },
+  "omac_frozen_target": {
+    "nodes": [
+      {
+        "id": "collect",
+        "worker_agent_id": "5e1d1f5b-ef9d-4757-8a1d-15ad24f42258",
+        "worker_name": "weekly-collect",
+        "role": "collect"
+      },
+      {
+        "id": "write",
+        "worker_agent_id": "5f27f945-b329-47e5-9498-a643dc2fef37",
+        "worker_name": "weekly-write",
+        "role": "write"
+      },
+      {
+        "id": "review",
+        "worker_agent_id": "f1657953-35f3-4abc-8ed8-083f0a8932fc",
+        "worker_name": "weekly-review",
+        "role": "review",
+        "reviewer": null
+      }
+    ],
+    "edges": [
+      ["collect", "write"],
+      ["write", "review"]
+    ],
+    "delivery_mode": "content",
+    "review_call_policy": "review worker is the sole business review call; no extra OMAC reviewer"
+  },
+  "redaction": {
+    "removed": ["access_token", "refresh_token", "cookie", "authorization_header", "embedded_git_credentials", "custom_env_values"],
+    "remote_urls": "host-only values retained; credential-bearing Git remote URL omitted"
+  },
+  "precondition_blockers": [
+    "真实 content submit、deliverable 持久化和独立 workdir 读取尚未完成",
+    "当前 weekly.yaml 仍使用共享 worker 和额外 reviewer，必须在 S02 前置实现中改为 frozen target",
+    "冻结 weekly fixture 当前是本地未提交资料；必须在 S03 smoke 中证明同一 attachment/ref 可被两种编排读取且字节哈希一致",
+    "Desktop 非计量 smoke 尚未通过"
+  ]
+}

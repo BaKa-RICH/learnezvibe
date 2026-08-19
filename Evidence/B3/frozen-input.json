@@ -1,0 +1,123 @@
+{
+  "schema": "b3.frozen-input/v1",
+  "frozen_at": "2026-08-19T17:43:00+08:00",
+  "status": "frozen-with-s02-implementation",
+  "s02_update": "2026-08-19T20:00:00+08:00",
+  "experiment": "B3 Native squad versus OMAC three-node weekly baseline",
+  "repositories": {
+    "oh_my_multica": {
+      "path": "D:\\agentlearn\\oh-my-multica",
+      "head": "ab9d0feb6150b90751aed0ed07e8654d73f90cc1",
+      "short_head": "ab9d0fe",
+      "worktree_status": "clean_except_untracked_agents_directory",
+      "untracked_paths_observed": [
+        ".agents/"
+      ],
+      "s02_baseline": "4f1773d",
+      "s02_commit_subject": "feat(content): S02 content 交付前置实现",
+      "s02_verification": "零新增回归 (相对 4f1773d 基线), 修复 1 个基线问题"
+    },
+    "learnezvibe": {
+      "path": "D:\\agentlearn\\learnezvibe",
+      "git_head": "4ae97c921cf15be5d64a006d42e62120d1a9876a",
+      "git_commit_time": "2026-08-16T19:30:12+08:00",
+      "git_commit_subject": "chore(omac): manifest sync",
+      "checkout_rule": "正式每个 workdir 启动时必须验证该 HEAD；若平台 checkout 不能得到该 revision，样本排除且不得静默替换输入。"
+    }
+  },
+  "input_scope": {
+    "description": "正式任务可读取的仓库 checkout 基线。周报业务事实另由 weekly_fixture 提供；两者都必须在首个计量 run 前校验。",
+    "files": [
+      {
+        "path": ".omac/config.yaml",
+        "sha256": "57956c43eabd8b0700e0e9faf6e52a8c55f56ac363c3759c8926e6fc77e765d7",
+        "tracked_at_frozen_head": true,
+        "note": "当前项目连接配置；运行时凭环境注入的实际平台身份，不把凭据纳入证据。"
+      },
+      {
+        "path": ".omac/manifest.yaml",
+        "sha256": "1ab19aea39eaafec1a235740d6f4b89bdc9644d67a6c58d14706dcc14dc79501",
+        "tracked_at_frozen_head": true,
+        "note": "历史最小流程 manifest；B3 正式 weekly manifest 由前置切片冻结后另存配置快照。"
+      },
+      {
+        "path": "README.md",
+        "sha256": "ccd64289ee7b94a7d42b44edadd67cd594fd1039b0fa157d5d77c22ef76a8e1a",
+        "tracked_at_frozen_head": true
+      },
+      {
+        "path": "report.md",
+        "sha256": "3970848b42475b13e3b503782d2e86886d04de808588dbb97d47acd1179fc3aa",
+        "tracked_at_frozen_head": true
+      }
+    ],
+    "uncommitted_local_files_not_part_of_checkout": [
+      ".omac/weekly.yaml",
+      ".omac/weekly.test.yaml",
+      "plan/",
+      "Evidence/",
+      "mocksite/",
+      "scripts_tmp_b2close.py",
+      "交接信-新session.md",
+      "面试准备-简历问答拆解.md",
+      "项目总纲-Multica工作流引擎.md",
+      "学习笔记-omca与multica协作机制.md",
+      "omac联调排障手册.md"
+    ]
+  },
+  "weekly_fixture": {
+    "fixture_id": "b3-weekly-fixture-v1",
+    "purpose": "作为四个正式样本中 collect 节点唯一允许使用的本周项目进展事实源，禁止用动态网页、当前时间或运行期间变化的仓库内容补充。",
+    "source_type": "immutable-root-issue-attachment-or-equivalent-platform-readable-ref",
+    "source_note": "这些文件当前是本地未提交资料，不会随冻结 Git HEAD checkout 出现。S03 前必须把完全相同的字节作为共同根 issue 输入注入 Native 与 OMAC；这属于实验初始输入，不是节点间人工搬运。",
+    "files": [
+      {"path": "交接信-新session.md", "bytes": 5297, "sha256": "a3553b02ce6ad7de19aa9bab379b5568cb822abfeed1b094ccd6876be0997271"},
+      {"path": "项目总纲-Multica工作流引擎.md", "bytes": 18915, "sha256": "17c5cb0d368aa935fd18d4922ce5a516f318ee8b6e8277a4a3194036e004cde2"},
+      {"path": "Evidence/B1卡点清单.md", "bytes": 8165, "sha256": "40cb15e9ba79f737bd9b549deed03f421d449a30dee7f585b580b0db07b26a48"},
+      {"path": "Evidence/B2验收记录.md", "bytes": 4205, "sha256": "9d744387dc9ddbf93de3814bd27794c325568e1e575e6831f78e968ce627819c"}
+    ],
+    "aggregate_digest": {"algorithm": "sha256", "canonicalization": "UTF-8 concat of path + NUL + lowercase-file-sha256 + LF, in listed order", "sha256": "67419502b9382f869f4ce4d50a2afe020cbd6bc6333bf628233b736990921749"},
+    "delivery_contract": [
+      "每个正式根 issue 在首个计量 run 前关联同一 fixture/ref，记录平台 attachment/ref identity。",
+      "collect 必须能读到四个文件且逐文件 SHA-256 匹配；否则该尝试不得进入业务执行。",
+      "Native 与 OMAC 不得获得不同文件、额外提示或不同版本。",
+      "fixture 只在样本开始前注入；collect -> write -> review 的产物交接仍必须由被测编排系统完成。"
+    ]
+  },
+  "hash_recalculation": {
+    "command": "Get-FileHash -Algorithm SHA256 -LiteralPath <path>",
+    "result": "All four tracked input hashes were recalculated against the current checkout and matched this manifest."
+  },
+  "sample_slots": [
+    {
+      "slot": "Native-01",
+      "group": "native",
+      "ordinal": 1,
+      "status": "reserved"
+    },
+    {
+      "slot": "OMAC-01",
+      "group": "omac",
+      "ordinal": 1,
+      "status": "reserved"
+    },
+    {
+      "slot": "Native-02",
+      "group": "native",
+      "ordinal": 2,
+      "status": "reserved"
+    },
+    {
+      "slot": "OMAC-02",
+      "group": "omac",
+      "ordinal": 2,
+      "status": "reserved"
+    }
+  ],
+  "input_invariants": [
+    "四个正式样本使用同一 Git revision、checkout 输入清单和 weekly fixture。",
+    "每个正式 workdir 启动时记录实际 HEAD、checkout 文件哈希和 weekly fixture 哈希；不一致则按排除分类。",
+    "WEEK-9、两次取消 run、smoke run 和 B4 reject/rework 不属于正式样本。",
+    "任何冻结后修改输入、prompt、agent 参数、manifest 或验收规则，均使本批次需要重新冻结。"
+  ]
+}

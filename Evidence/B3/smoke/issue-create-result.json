@@ -1,0 +1,32 @@
+Uploaded 交接信-新session.md
+Uploaded 项目总纲-Multica工作流引擎.md
+Uploaded Evidence/B1卡点清单.md
+Uploaded Evidence/B2验收记录.md
+{
+  "assignee_id": "5e1d1f5b-ef9d-4757-8a1d-15ad24f42258",
+  "assignee_type": "agent",
+  "created_at": "2026-08-19T12:14:36Z",
+  "creator_id": "5cf4bb5e-409f-452e-8769-cb82367f6e15",
+  "creator_type": "member",
+  "description": "\u003e **非计量 smoke**: 本 issue 用于 B3 S03 前置验证,不计入正式样本,不占用 Native-01/OMAC-01/Native-02/OMAC-02 槽位。\n\n请完成一条三阶段周报流程 (content 交付模式验证):\n\n1. **collect**: 收集并整理本周数据,产出 weekly-data.md\n2. **write**: 基于 weekly-data.md 生成 weekly-report.md  \n3. **review**: 检查 weekly-report.md 的准确性和结构\n\n**依赖关系**: collect -\u003e write -\u003e review\n\n**验收标准**:\n- weekly-data.md 存在且内容有效\n- weekly-report.md 存在且包含\"本周进展\"和\"下周计划\"\n- write 使用 collect 的产物\n- review 检查 write 的产物\n\n---\n\n## OMAC 控制信息\n\n本 issue 由 OMAC 引擎编排\n\n**manifest 路径**: `.omac/weekly.yaml`\n\n**fixture 文件** (本周数据源):\n- 交接信-新session.md\n- 项目总纲-Multica工作流引擎.md\n- Evidence/B1卡点清单.md\n- Evidence/B2验收记录.md\n\n(这四个文件已作为附件提供)",
+  "due_date": null,
+  "id": "db173d75-d402-43e8-a2c1-fa8c207a744f",
+  "identifier": "WEEK-10",
+  "labels": [],
+  "last_activity_at": "2026-08-19T12:14:36.398799Z",
+  "metadata": {},
+  "number": 10,
+  "parent_issue_id": null,
+  "position": -5,
+  "priority": "none",
+  "project_id": null,
+  "properties": {},
+  "revision": 1,
+  "stage": null,
+  "start_date": null,
+  "status": "todo",
+  "status_category": "todo",
+  "title": "[B3-SMOKE 非计量] weekly content 跨节点传递验证",
+  "updated_at": "2026-08-19T12:14:36Z",
+  "workspace_id": "466eb7c0-2554-45e6-91a8-6890663bb359"
+}

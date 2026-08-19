@@ -1,0 +1,7 @@
+2026-08-19T12:50:07.114618Z [info     ] config_synced                  branch=main path=D:\agentlearn\learnezvibe\.omac\config.yaml
+2026-08-19T12:50:07.129179Z [info     ] unblock                        ids=['write'] kind=develop
+2026-08-19T12:52:05.562720Z [info     ] dispatch                       handoff=waiting id=ba05306d-70ca-429f-b11b-687ebbd5b996 kind=develop node=write worker=weekly-write
+KEY      STATUS       WORKER          WORK_ITEM_ID
+collect  abandoned    weekly-collect  c382fcfb-b623-4b7d-b7c0-dd48621e90fd
+write    in_progress  weekly-write    ba05306d-70ca-429f-b11b-687ebbd5b996
+review   blocked      weekly-review   -

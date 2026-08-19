@@ -1,0 +1,67 @@
+..FF..............F.........................F......F.................... [  7%]
+........................................................................ [ 15%]
+........................................................................ [ 23%]
+.................................................F...................... [ 31%]
+........................................................................ [ 38%]
+........................................................................ [ 46%]
+...................................................................F.F.. [ 54%]
+........................................................................ [ 62%]
+........................................................................ [ 70%]
+........................................................................ [ 77%]
+........................................................................ [ 85%]
+................................F....................................... [ 93%]
+.............................................................            [100%]
+================================== FAILURES ===================================
+E   AssertionError: assert 'OMAC_ENGINE=multica OMAC_WORKSPACE_ID=ws-1 OMAC_PROJECT_ID=project-1 omac work show ISSUE-9 --output json' in '> **OMAC ¿ØÖÆµÄÖ´ÐÐ¡£µÚÒ»¶¯×÷±ØÐëÑÏ¸ñÖ´ÐÐ£º**\n\n```bash\nomac work show ISSUE-9 --output json\n```\n\n> `omac work show` ºÍ `omac work...ork show ·µ»ØµÄ¾«È· `omac work submit` ÃüÁî×÷Îª OMAC ¿ØÖÆÃüÁî£»ÒÑÓÐÊÖ¹¤¸½¼þ»ò verification µ«È±ÉÙ `delivery_identity` Ê±Ò²±ØÐëÍ¨¹ý¸Ã submit ÃüÁî·â´æ¡£\n\n'
+D:\agentlearn\oh-my-multica\tests\test_dispatch.py:214: AssertionError: assert 'OMAC_ENGINE=multica OMAC_WORKSPACE_ID=ws-1 OMAC_PROJECT_ID=project-1 omac work show ISSUE-9 --output json' in '> **OMAC ¿ØÖÆµÄÖ´ÐÐ¡£µÚÒ»¶¯×÷±ØÐëÑÏ¸ñÖ´ÐÐ£º**\n\n```bash\nomac work show ISSUE-9 --output json\n```\n\n> `omac work show` ºÍ `omac work...ork show ·µ»ØµÄ¾«È· `omac work submit` ÃüÁî×÷Îª OMAC ¿ØÖÆÃüÁî£»ÒÑÓÐÊÖ¹¤¸½¼þ»ò verification µ«È±ÉÙ `delivery_identity` Ê±Ò²±ØÐëÍ¨¹ý¸Ã submit ÃüÁî·â´æ¡£\n\n'
+E   AssertionError: assert 'OMAC_ENGINE=multica OMAC_WORKSPACE_ID=ws-1 OMAC_PROJECT_ID=project-1 omac work show ISSUE-9 --output json' in '> **OMAC ¿ØÖÆµÄÖ´ÐÐ¡£µÚÒ»¶¯×÷±ØÐëÑÏ¸ñÖ´ÐÐ£º**\n\n```bash\nomac work show ISSUE-9 --output json\n```\n\n> `omac work show` ºÍ `omac work...ork show ·µ»ØµÄ¾«È· `omac work submit` ÃüÁî×÷Îª OMAC ¿ØÖÆÃüÁî£»ÒÑÓÐÊÖ¹¤¸½¼þ»ò verification µ«È±ÉÙ `delivery_identity` Ê±Ò²±ØÐëÍ¨¹ý¸Ã submit ÃüÁî·â´æ¡£\n\n'
+D:\agentlearn\oh-my-multica\tests\test_dispatch.py:214: AssertionError: assert 'OMAC_ENGINE=multica OMAC_WORKSPACE_ID=ws-1 OMAC_PROJECT_ID=project-1 omac work show ISSUE-9 --output json' in '> **OMAC ¿ØÖÆµÄÖ´ÐÐ¡£µÚÒ»¶¯×÷±ØÐëÑÏ¸ñÖ´ÐÐ£º**\n\n```bash\nomac work show ISSUE-9 --output json\n```\n\n> `omac work show` ºÍ `omac work...ork show ·µ»ØµÄ¾«È· `omac work submit` ÃüÁî×÷Îª OMAC ¿ØÖÆÃüÁî£»ÒÑÓÐÊÖ¹¤¸½¼þ»ò verification µ«È±ÉÙ `delivery_identity` Ê±Ò²±ØÐëÍ¨¹ý¸Ã submit ÃüÁî·â´æ¡£\n\n'
+E   AssertionError: assert 'OMAC_ENGINE=multica OMAC_WORKSPACE_ID=ws-1 OMAC_PROJECT_ID=proj-1 omac work show REAL-100 --output json' in '> **OMAC ¿ØÖÆµÄÖ´ÐÐ¡£µÚÒ»¶¯×÷±ØÐëÑÏ¸ñÖ´ÐÐ£º**\n\n```bash\nomac work show REAL-100 --output json\n```\n\n> `omac work show` ºÍ `omac wor...ÒÆ¶¯¶Ë¿ÉµÇÂ¼\n- token 10 ·ÖÖÓ¹ýÆÚ\n\n## ·ÇÄ¿±ê\n- ²»½ÓµÚÈý·½ OAuth\n- ²»¸Ä DB schema\n\n## ½»¸¶Ô¼Êø\n- PR »ùÏß: `feature/v1`\n- ¸Ä¶¯·ÖÖ§¸²¸ÇÂÊ: `¡Ý 90%`'
+D:\agentlearn\oh-my-multica\tests\test_dispatch.py:403: AssertionError: assert 'OMAC_ENGINE=multica OMAC_WORKSPACE_ID=ws-1 OMAC_PROJECT_ID=proj-1 omac work show REAL-100 --output json' in '> **OMAC ¿ØÖÆµÄÖ´ÐÐ¡£µÚÒ»¶¯×÷±ØÐëÑÏ¸ñÖ´ÐÐ£º**\n\n```bash\nomac work show REAL-100 --output json\n```\n\n> `omac work show` ºÍ `omac wor...ÒÆ¶¯¶Ë¿ÉµÇÂ¼\n- token 10 ·ÖÖÓ¹ýÆÚ\n\n## ·ÇÄ¿±ê\n- ²»½ÓµÚÈý·½ OAuth\n- ²»¸Ä DB schema\n\n## ½»¸¶Ô¼Êø\n- PR »ùÏß: `feature/v1`\n- ¸Ä¶¯·ÖÖ§¸²¸ÇÂÊ: `¡Ý 90%`'
+E   AssertionError: assert 'OMAC_ENGINE=mock OMAC_WORKSPACE_ID=ws' in '> **Agent entry:** Read the authoritative JSON context for this task first.\n\n```bash\nomac work show 2 --output jso...rements and decisions. If they conflict with the current contract, ask for confirmation first:\n- ×îÖÕ¿ª·¢½»¸¶: `closeout-1`'
+     +  where '> **Agent entry:** Read the authoritative JSON context for this task first.\n\n```bash\nomac work show 2 --output jso...rements and decisions. If they conflict with the current contract, ask for confirmation first:\n- ×îÖÕ¿ª·¢½»¸¶: `closeout-1`' = WorkItem(id='2', workspace_id='ws', title='[DAG:final-acceptance-p-demo-r1] ×îÖÕÑéÊÕ ¡¤ Demo ¡¤ µÚ 1 ÂÖ', description='> **Age...alse, agent_run_failed=False, created_at=None, updated_at=None, platform_assignee_id=None, unknown_persisted_fields={}).description
+D:\agentlearn\oh-my-multica\tests\test_tasks.py:232: AssertionError: assert 'OMAC_ENGINE=mock OMAC_WORKSPACE_ID=ws' in '> **Agent entry:** Read the authoritative JSON context for this task first.\n\n```bash\nomac work show 2 --output jso...rements and decisions. If they conflict with the current contract, ask for confirmation first:\n- ×îÖÕ¿ª·¢½»¸¶: `closeout-1`'
+E   AssertionError: assert '```bash\nOMAC_ENGINE=mock OMAC_WORKSPACE_ID=ws omac work show 1 --output json\n```' in '> **Agent entry:** Read the authoritative JSON context for this task first.\n\n```bash\nomac work show 1 --output jso...Orchestrator (`orchestrator`)\n- Objective: ÊµÏÖ feature-x\n\n## Completion criteria\n- ¶Ëµ½¶Ë¿É×ßÍ¨\n\n## Non-goals\n- ²»ÅöÆäËûÄ£¿é'
+     +  where '> **Agent entry:** Read the authoritative JSON context for this task first.\n\n```bash\nomac work show 1 --output jso...Orchestrator (`orchestrator`)\n- Objective: ÊµÏÖ feature-x\n\n## Completion criteria\n- ¶Ëµ½¶Ë¿É×ßÍ¨\n\n## Non-goals\n- ²»ÅöÆäËûÄ£¿é' = WorkItem(id='1', workspace_id='ws', title='[DAG:decompose-feature-x-8c55fb40] feature-x', description='> **Agent entry...n_failed=False, created_at=None, updated_at=None, platform_assignee_id='mock-agent-alice', unknown_persisted_fields={}).description
+---------------------------- Captured stderr call -----------------------------
+[2m2026-08-19T11:57:57.158978Z[0m [[32m[1minfo     [0m] [1mdispatch                      [0m [36mid[0m=[35m1[0m [36mkind[0m=[35mdecompose[0m [36mworker[0m=[35malice[0m
+[2m2026-08-19T11:57:57.158978Z[0m [[32m[1minfo     [0m] [1mnode_done                     [0m [36mid[0m=[35m1[0m [36mkind[0m=[35mdecompose[0m
+D:\agentlearn\oh-my-multica\tests\test_tasks.py:339: AssertionError: assert '```bash\nOMAC_ENGINE=mock OMAC_WORKSPACE_ID=ws omac work show 1 --output json\n```' in '> **Agent entry:** Read the authoritative JSON context for this task first.\n\n```bash\nomac work show 1 --output jso...Orchestrator (`orchestrator`)\n- Objective: ÊµÏÖ feature-x\n\n## Completion criteria\n- ¶Ëµ½¶Ë¿É×ßÍ¨\n\n## Non-goals\n- ²»ÅöÆäËûÄ£¿é'
+E   AssertionError: assert 'OMAC_ENGINE=mock OMAC_WORKSPACE_ID=mock-workspace omac work show plan-1 --output json' in '# Task ¡¤ develop ¡¤ authoring\n\n- issue: 1\n- title: [DAG:a] title-develop\n- status: todo\n- identity: worker:alice\...idence`\n\n## Submit when finished\n    omac work submit 1 --pr-url <pr_url> --verification-file <verification_file>\n'
+D:\agentlearn\oh-my-multica\tests\test_cli_work.py:982: AssertionError: assert 'OMAC_ENGINE=mock OMAC_WORKSPACE_ID=mock-workspace omac work show plan-1 --output json' in '# Task ¡¤ develop ¡¤ authoring\n\n- issue: 1\n- title: [DAG:a] title-develop\n- status: todo\n- identity: worker:alice\...idence`\n\n## Submit when finished\n    omac work submit 1 --pr-url <pr_url> --verification-file <verification_file>\n'
+E   AssertionError: assert 5 == 0
+     +  where 5 = <function main at 0x00000156A02572E0>(['node', 'retry', 'C:UsersliangyunxuanAppDataLocalTemppytest-of-liangyunxuanpytest-403test_worker_runtime_failure_ne0dag.yaml', 'a'])
+     +  and   0 = <module 'omac.cli.exit_codes' from 'D:\\agentlearn\\oh-my-multica\\tests\\..\\src\\omac\\cli\\exit_codes.py'>.OK
+---------------------------- Captured stderr call -----------------------------
+[2m2026-08-19T11:58:06.710827Z[0m [[32m[1minfo     [0m] [1mdispatch                      [0m [36mhandoff[0m=[35mwaiting[0m [36mid[0m=[35m1[0m [36mkind[0m=[35mdevelop[0m [36mnode[0m=[35ma[0m [36mworker[0m=[35malice[0m
+[2m2026-08-19T11:58:06.731083Z[0m [[32m[1minfo     [0m] [1mnode_failed                   [0m [36mid[0m=[35m1[0m [36mkind[0m=[35mdevelop[0m [36mnode[0m=[35ma[0m [36mreason[0m=[35m'Worker Run run-capacity-1 failed with a non-retryable or unknown error. Inspect it with `omac work show 1 --output json` before an explicit operator decision.'[0m [36mrun_id[0m=[35mrun-capacity-1[0m
+[2m2026-08-19T11:58:06.735873Z[0m [[32m[1minfo     [0m] [1mneeds_decision                [0m [36mdone[0m=[35m0[0m [36mfailed[0m=[35m['a'][0m [36mkind[0m=[35mdevelop[0m [36mtotal[0m=[35m1[0m
+Error: Manifest file not found: C:UsersliangyunxuanAppDataLocalTemppytest-of-liangyunxuanpytest-403test_worker_runtime_failure_ne0dag.yaml
+Create one with `omac plan create`, then run `omac node`.
+D:\agentlearn\oh-my-multica\tests\test_loop.py:3991: AssertionError: assert 5 == 0
+E   AssertionError: assert 5 == 0
+     +  where 5 = <function main at 0x00000156A02572E0>(['node', 'retry', 'C:UsersliangyunxuanAppDataLocalTemppytest-of-liangyunxuanpytest-403test_reviewer_runtime_failure_0dag.yaml', 'a', '--stage', 'review'])
+     +  and   0 = <module 'omac.cli.exit_codes' from 'D:\\agentlearn\\oh-my-multica\\tests\\..\\src\\omac\\cli\\exit_codes.py'>.OK
+---------------------------- Captured stderr call -----------------------------
+[2m2026-08-19T11:58:06.845366Z[0m [[32m[1minfo     [0m] [1mdispatch                      [0m [36mhandoff[0m=[35mwaiting[0m [36mid[0m=[35m1[0m [36mkind[0m=[35mdevelop[0m [36mnode[0m=[35ma[0m [36mworker[0m=[35malice[0m
+[2m2026-08-19T11:58:06.875698Z[0m [[32m[1minfo     [0m] [1mreview_dispatch               [0m [36mid[0m=[35m1[0m [36mkind[0m=[35mdevelop[0m [36mnode[0m=[35ma[0m [36mreviewer[0m=[35mbob[0m
+[2m2026-08-19T11:58:06.895428Z[0m [[32m[1minfo     [0m] [1mneeds_decision                [0m [36mdone[0m=[35m0[0m [36mfailed[0m=[35m['a'][0m [36mkind[0m=[35mdevelop[0m [36mtotal[0m=[35m1[0m
+Error: Manifest file not found: C:UsersliangyunxuanAppDataLocalTemppytest-of-liangyunxuanpytest-403test_reviewer_runtime_failure_0dag.yaml
+Create one with `omac plan create`, then run `omac node`.
+D:\agentlearn\oh-my-multica\tests\test_loop.py:4069: AssertionError: assert 5 == 0
+E   AssertionError: assert 'verdict: reject\r\n' == 'verdict: reject\n'
+      
+      - verdict: reject
+      + verdict: reject
+      ?                +
+D:\agentlearn\oh-my-multica\tests\test_engines_multica.py:1563: AssertionError: assert 'verdict: reject\r\n' == 'verdict: reject\n'
+=========================== short test summary info ===========================
+FAILED tests/test_dispatch.py::TestRenderIssueBody::test_develop_body_puts_omac_control_protocol_first[TaskPhase.AUTHORING-\u5f00\u53d1\u6267\u884c\u8005]
+FAILED tests/test_dispatch.py::TestRenderIssueBody::test_develop_body_puts_omac_control_protocol_first[TaskPhase.REVIEW-\u72ec\u7acb\u8bc4\u5ba1\u8005]
+FAILED tests/test_dispatch.py::TestRenderIssueBody::test_bootstrap_can_include_engine_env_for_no_checkout_runtime
+FAILED tests/test_tasks.py::test_create_authoring_task_renders_body_contract_and_source_refs
+FAILED tests/test_tasks.py::test_run_task_renders_single_agent_bootstrap_as_code_block
+FAILED tests/test_cli_work.py::test_show_cli_source_issue_commands_include_engine_env
+FAILED tests/test_loop.py::test_worker_runtime_failure_next_action_recovers_authoring
+FAILED tests/test_loop.py::test_reviewer_runtime_failure_next_action_recovers_review
+FAILED tests/test_engines_multica.py::test_multica_payload_ref_downloads_known_attachment_without_comment_thread
