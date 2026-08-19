@@ -3,13 +3,13 @@ meta:
   reconcile_audit:
     schema: omac.reconcile-audit/v1
     last_full_scan_at: '2026-08-19T12:26:13Z'
-    completed_interval_ticks: 19
+    completed_interval_ticks: 20
 nodes:
 - id: collect
   worker: weekly-collect
   blocked_by: []
   work_item_id: c382fcfb-b623-4b7d-b7c0-dd48621e90fd
-  status: in_progress
+  status: blocked
   contract:
     objective: 收集本周多卡 agent 平台的学习与项目进展,汇总成 3-5 条要点写入 weekly-data.md
     non_goals:
@@ -43,13 +43,12 @@ nodes:
     delivery_mode: content
     source_of_truth:
     - weekly-data.md
-  recovery_marker: true
 - id: write
   worker: weekly-write
   blocked_by:
   - collect
   work_item_id: null
-  status: todo
+  status: blocked
   contract:
     objective: 基于 weekly-data.md 撰写周报 weekly-report.md,包含"本周进展"与"下周计划"两个小节
     non_goals:
@@ -88,7 +87,7 @@ nodes:
   blocked_by:
   - write
   work_item_id: null
-  status: todo
+  status: blocked
   contract:
     objective: 评审 weekly-report.md:内容准确、结构完整、数据与 weekly-data.md 一致;通过则定稿
     non_goals:
