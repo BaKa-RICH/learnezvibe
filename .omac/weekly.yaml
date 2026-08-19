@@ -2,8 +2,8 @@ meta:
   title: weekly 周报流程(B1 mock 诊断)
   reconcile_audit:
     schema: omac.reconcile-audit/v1
-    last_full_scan_at: '2026-08-19T12:48:20Z'
-    completed_interval_ticks: 20
+    last_full_scan_at: '2026-08-19T12:55:14Z'
+    completed_interval_ticks: 0
 nodes:
 - id: collect
   worker: weekly-collect
