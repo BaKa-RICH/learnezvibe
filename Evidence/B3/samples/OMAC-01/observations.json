@@ -26,6 +26,11 @@
       "at": "2026-08-20T09:26:45Z",
       "event": "collect done (run cba6ee44, 80 msgs)",
       "note": "fixture 注入链路验证成功: 从根 issue 下载 4 附件, 自算 SHA-256 与 frozen 全一致 (a3553b02/17c5cb0d/40cb15e9/9d744387); 未用 workdir 同名文件; frozen-input.json 未附, 如实标注"
+    },
+    {
+      "at": "2026-08-20T09:35:49Z",
+      "event": "write done (run 20353f07, 60 msgs)",
+      "note": "weekly-report.md 基于 collect 的 weekly-data.md, 含本周进展/下周计划, 指标说明诚实(不编造)"
     }
   ]
 }
