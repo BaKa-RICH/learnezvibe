@@ -73,7 +73,7 @@
 - 修复: `206f3b4` 补 hydration + 回归测试, 全量 101 失败基线零新增。
 - 验证: 真实环境 write/review 过门 + 全新 smoke 三节点一次过门, 跨节点数据真实流动。
 
-**详细证据**: `Evidence/B3/s03-rootcause-fix-20260820.md`、`Evidence/B3/smoke/s03-final-pass.md`、`Evidence/B3/交接信-S04.md`
+**详细证据**: `Evidence/B3/s03-rootcause-fix-20260820.md`、`Evidence/B3/smoke/s03-final-pass.md`、`Evidence/B3/交接信-S04-第二组.md`
 
 ---
 

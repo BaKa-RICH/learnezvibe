@@ -1,50 +1,44 @@
 # 下一 Session 快速入口
 
-> 3 分钟了解当前状态, 然后读主文档
+> 3 分钟了解当前状态，然后读主文档
 
-## 当前状态 (一句话)
+## 当前状态（一句话）
 
-**S03 已 PASS; S04 第一组配对 (Native-01 + OMAC-01) 已完成, 双 SUCCESS (2026-08-20)。第二组待开跑。**
+**S04 第一组（Native-01 + OMAC-01）已完成，双 SUCCESS（2026-08-20）。第二组（Native-02 + OMAC-02）待开跑，跑完做 S05 分析 → B3 收口。**
 
-**最新报告**: `Evidence/B3/samples/pair-01-complete.md` (双样本指标/A1-A5/环境问题记录)。
+**首选阅读**: `Evidence/B3/交接信-S04-第二组.md` -- 下个 session 的第一封信（第一组怎么跑通的/第二组照抄步骤/避坑/口径决定/S05 要点，一页讲完）。本文件是 3 分钟速查索引。
 
-**首选阅读**: `Evidence/B3/交接信-S04.md` -- 下个 session 的第一封信 (S03 历程/前置事项/已定案决策/读数注意, 一页讲完)。本文件是 3 分钟速查索引。
+## 第一组结论（硬核版）
 
-## S04 开跑前必须解决的两件事
+完整报告: `Evidence/B3/samples/pair-01-complete.md`；原始证据: `samples/Native-01/` + `samples/OMAC-01/`。
+- **Native-01**: leader @mention 委派 collect→write→review（同一工单评论区接力），根 issue done。成员三节点 in 123141/out 10313/cr 940288；含 leader 编排开销 in 226231/out 19642/cr 2666240。步骤 78（成员 39 + leader 38），墙钟 10m（成员）/13m（含 leader）。
+- **OMAC-01**: 固定三节点 DAG 收敛（rc=0），每节点独立新工单。in 175384/out 29605/cr 2992896。步骤 91，墙钟 23m08s。review 有 review-consistency.py 独立核验。
+- **一句话**: OMAC 用更多 token/时间换确定性与可验证性；Native 更快更省但 review 是声明式、且依赖 leader 临场可靠性。
 
-1. **fixture 注入链路 (已解, 2026-08-20)**: 权威副本 `Evidence/B3/fixtures-v1/` (哈希全一致, 禁止编辑); 机制 = manifest.meta.source_issues 指向根 issue, collect 从根 issue 读 4 个冻结附件 (loop.py:3960, 无需改码)。S04 每样本: 建根 issue 上传 fixtures-v1 四文件 -> meta.source_issues 指向根 issue -> dag run
-2. **执行顺序**: 已定案为**配对并发** (Native-01+OMAC-01 同窗, Native-02+OMAC-02 同窗), protocol.md 已于 2026-08-20 修订并重新冻结。禁止同一 arm 并发与四样本全并发
+## 第二组开跑（照抄已验证 recipe，详见交接信）
 
-## 已定案的决策 (不再重议)
+1. **公共前置已就绪**：fixtures-v1（4 冻结文件）、`.omac/s04/root-issue-body.md`（共同正文）、weekly agents 已设 OMAC env。
+2. **Native-02**: 建根 issue（正文+4 附件）→ 指派周报 squad → leader 自动评论区委派。
+3. **OMAC-02**: 建根 issue → 复制 `.omac/s04-omac-01.yaml` 为 `-02`（改 title/source_issues/清状态，collect objective 保留模板句）→ `nohup bash .omac/s04-driver.sh .omac/s04-omac-02.yaml .omac/s04-omac-02.log &`。
+4. **采集**: 每样本 root-issue/runs/usage/run-messages/deliverables/summary 存 `samples/<id>/`；run-messages 格式已确认可用。
 
-- **WEEK-15 reviewer 合同质量意见 (gate 命令弱于验收声明): S04 前不采纳, 维持现口径**。理由: 现口径已被 S03 全链路验证; 一致性查验由 A4 rubric 人工查验兜底。未来若采纳, 一次性按计划执行: 收紧三节点 gate 命令 -> `dag check --no-review` lint -> 重新 smoke -> 修订 protocol.md 重新冻结 -> 两 arm 同步
-- **不降级 PR 模式**, content 模式保留 (修复已验证)
-- **`omac dag check` 评审流程有无限轮询 bug** (reviewer agent 不写结构化 verdict, `run_review` 无超时, WEEK-11/15 两次复现): 规避方式 `--no-review` 或直接 `dag run/tick`; 记为 OMAC backlog, 不阻塞 B3
-- **B4 现在不写 plan**: B3 是 B4 的最小前置切片, 等 B3 完成 (S04 数据 + S05 报告) 后再规划 B4
+## 已定案决策（不再重议）
 
-## S03 最终证据
+- **配对并发**（同窗一 Native + 一 OMAC；禁同 arm 并发、禁四样本全并发）。
+- **codex 故障期 run 不计入计量**（用户拍板，2026-08-20；基础设施故障单列披露，计量用成功 run）。
+- **frozen-input.json 不附根 issue**（collect 自算哈希匹配即合规，第一组实测通过）。
+- **WEEK-15 reviewer 意见不采纳**；**B4 暂不写 plan**；**不降级 PR，content 保留**。
 
-主文档: `smoke/s03-final-pass.md` (时间线/sha256 链/token 用量/已知事项)
-根因与修复: `s03-rootcause-fix-20260820.md` (bug 链条, oh-my-multica@206f3b4)
+## 环境坑（已修，别踩）
 
-## Git Commits
+- **codex 账号余额耗尽 → 所有会话空转/截断**（表现像并发问题，实为欠费；用户充值修复）。
+- **OMAC agent 找不到引擎配置 → `omac work show` 报 engine missing**（排障手册问题 25）：已给 weekly agents 设 OMAC_ENGINE/WORKSPACE_ID/PROJECT_ID env 解决。
 
-**oh-my-multica** (main, 未 push):
-```
-206f3b4 - fix(content): complete-unsealed 收口前补 hydrate worker verification
-a605a34 - fix(content): 修复 content 模式 protocol 生成
-ab9d0fe - feat(content): S02 content 交付前置实现
-```
+## 纪律（血泪换的）
 
-**learnezvibe**: S03 PASS 文档与计划更新 (见 git log)
-
-## S04 执行要点 (已验证的纪律)
-
-- 配对并发逐样本后台跑: 有界 `omac dag tick` 驱动循环 (模板 `.omac/smoke-driver.sh`, 日志参考 `.omac/smoke-run.log`), 每样本 ~45 分钟, 我定时查状态用户零值守
-- 任何没读过源码的命令先读源码再跑; 涉及平台/agent 的命令一律带 timeout 或后台
-- 采集: 每样本 issue/run/run-message/usage/时间戳 + 每跳产物 SHA-256, 存 `Evidence/B3/samples/<sample-id>/`
-- 读数注意: collect 可能跑 2 个 run (smoke 中出现, usage 去重但 run 数是独立指标); review 的 gate 不查内容语义, A4 靠人工查验 run-message
+- 后台驱动用 `dag tick` + sleep，**不用 dag check**（评审轮询无限挂死，排障手册问题 24）。
+- 平台/agent 命令一律 timeout 或后台；没读过源码先读源码。
 
 ---
 
-**立即开始**: 设计并验证 fixture 注入链路 -> 用户确认执行顺序 -> 按 protocol.md 开跑 Native-01
+**立即开始**: 读 `交接信-S04-第二组.md` → 建 Native-02 + OMAC-02 根 issue → 启动双 arm → 采集 → S05 分析。

@@ -2,7 +2,7 @@
 
 > 适用环境:Windows + Git Bash + PowerShell + multica CLI v0.4.26 + oh-my-multica(omca) v1.0.0 + uv + codex agent
 > 本文档记录联调过程中遇到的全部问题、根因与正确解法。
-> 最后更新: 2026-08-20 (问题 20 根因定案为 hydration bug, 总览表补齐 20-24, 新增问题 24)
+> 最后更新: 2026-08-20 (问题 20 根因定案为 hydration bug, 总览表补齐 20-24, 新增问题 24; 2026-08-20 S04 新增问题 25: agent 找不到引擎配置)
 > 原则:**先看现场(日志/文件/命令输出),再下结论;所有结论基于源码核实,不靠猜。**
 
 ---
@@ -19,7 +19,7 @@ omca(oh-my-multica)是一个 Python 编排引擎,通过 multica CLI 指挥 Multi
 
 ---
 
-## 1. 问题总览表(24 个,按出现顺序)
+## 1. 问题总览表(25 个,按出现顺序)
 
 | # | 阶段 | 问题 | 根因类别 | 一句话修复 |
 |---|---|---|---|---|
@@ -47,6 +47,7 @@ omca(oh-my-multica)是一个 Python 编排引擎,通过 multica CLI 指挥 Multi
 | 22 | 集成 | OMAC 记住旧 DAG 状态需要 abandon | 状态持久化 | `omac node abandon` 或关 issue 后重跑 |
 | 23 | 集成 | 如何验证 agent 是否正确运行 submit | 排查方法 | 四层验证: run 日志/submit 模板/评论附件/工作项状态 |
 | 24 | 集成 | `dag check` 评审流程无限轮询挂死 | OMAC 轮询 bug | reviewer 只发文本 verdict 不写 review_verdict 元数据;规避 `--no-review` 或直接 dag tick (详见问题 24) |
+| 25 | 集成 | agent 跑 `omac work show` 报 "Engine type is missing" | agent 环境缺引擎配置 | workdir 无 .omac/config.yaml 且无 env;给 weekly agents 设 OMAC_ENGINE/WORKSPACE_ID/PROJECT_ID (详见问题 25) |
 
 ---
 
@@ -435,6 +436,26 @@ omca(oh-my-multica)是一个 Python 编排引擎,通过 multica CLI 指挥 Multi
   ```
 - **建议**: 作为 OMAC backlog bug 修复——`run_review` 轮询加超时 + 检测 reviewer 未按协议提交时给出人工逃生口 (或校验 reviewer 必须走 `omac work submit` 结构化提交)
 - **通用教训**: 命令可能远比名字暗示的复杂; `check` 不是静态校验而是完整评审流程, 涉及平台/agent 的命令一律带 timeout 或后台跑, 没读过源码先读源码
+
+---
+
+#### 问题 25: agent 跑 `omac work show` 报 "Engine type is missing"
+
+- **现象** (2026-08-20, S04 OMAC-01 collect run f34cb5e0):
+  - OMAC 派发的 collect agent 读到自己工单上的 sealed contract 后, 执行 `omac work show <issue> --output json`
+  - 返回 `ValidationError: Engine type is missing. Set config.yaml engine, environment variable OMAC_ENGINE, or --engine.`
+  - agent 以"Blocked by the issue's sealed OMAC contract"结束, 不交付
+- **根因** (agent workdir 无引擎配置):
+  - omac 的 `load_config` 只读 cwd 下 `.omac/config.yaml` (config.py CONFIG_PATH)
+  - agent workdir (multica_workspaces/.../workdir) **不是 repo 全量 checkout**, 只有 AGENTS.md + .multica, 没有 .omac/config.yaml
+  - 配置另可从 env `OMAC_ENGINE/OMAC_WORKSPACE_ID/OMAC_PROJECT_ID` 提供
+  - **为什么 smoke 没踩到**: smoke 的 collect agent 自己机灵地 `$env:OMAC_ENGINE=...` 再跑 omac (run-message 里可见), 碰巧兜底; 但这是依赖 agent 运气
+- **修复** (基础设施接线, 不改模型/thinking/runtime):
+  ```bash
+  # 给三个 weekly agent 设置持久 env (multica agent env set, 用 --custom-env-file)
+  {"OMAC_ENGINE": "multica", "OMAC_WORKSPACE_ID": "<workspace>", "OMAC_PROJECT_ID": "<project>"}
+  ```
+- **通用教训**: 靠 agent 临场自愈的"碰巧能跑"不是真配置; 正式采样前要把依赖运气的地方变成确定配置。另一个判读提醒: 大批会话同时空转/截断时先查账号余额/资源(问题 25 同窗口即 codex 欠费所致), 别急着改架构。
 
 ---
 

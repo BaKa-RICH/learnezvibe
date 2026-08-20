@@ -1,13 +1,13 @@
 # B3 Evidence 文档索引
 
 > 最后更新: 2026-08-20  
-> 当前状态: **S03 PASS** (全新链路一次过门收敛), S04 正式采样就绪待开跑
+> 当前状态: **S04 第一组完成** (Native-01 + OMAC-01 双 SUCCESS), 第二组 (Native-02 + OMAC-02) 待开跑
 
 ## 快速导航
 
-**新 session 入口**: 先读 `交接信-S04.md` (下个 session 的第一封信) -> `next-session-entry.md` (3 分钟速查)
+**新 session 入口**: 先读 `交接信-S04-第二组.md` (下个 session 的第一封信) -> `next-session-entry.md` (3 分钟速查)
 
-**当前问题**: S04 开跑前置 -- ① fixture 注入链路设计 (根 issue -> OMAC collect 接线未验证); ② 执行顺序已定案为配对并发 (protocol.md 已修订)。详见交接信-S04.md / next-session-entry.md
+**当前状态**: 第一组双 SUCCESS, 证据在 `samples/Native-01/` + `samples/OMAC-01/` + `samples/pair-01-complete.md`。第二组照抄已验证 recipe (详见交接信-S04-第二组.md)。
 
 ## 目录结构
 
