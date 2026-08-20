@@ -10,7 +10,7 @@
 
 ## S04 开跑前必须解决的两件事
 
-1. **fixture 注入链路设计** (未解设置题): 协议要求根 issue 携带共同任务正文 + 4 个冻结 fixture 附件, OMAC 侧"collect 通过与 Native 相同的根 issue fixture/ref 读取初始事实"。但今天的 smoke 没走这条路 (agent 用 workdir 上下文), **根 issue fixture -> OMAC collect 节点的具体接线方式还没被真实操作过** (source_refs? issue 描述? plan create 的输入?), 开跑前必须先设计并小规模验证, 否则 OMAC 样本可能不合规
+1. **fixture 注入链路 (已解, 2026-08-20)**: 权威副本 `Evidence/B3/fixtures-v1/` (哈希全一致, 禁止编辑); 机制 = manifest.meta.source_issues 指向根 issue, collect 从根 issue 读 4 个冻结附件 (loop.py:3960, 无需改码)。S04 每样本: 建根 issue 上传 fixtures-v1 四文件 -> meta.source_issues 指向根 issue -> dag run
 2. **执行顺序**: 已定案为**配对并发** (Native-01+OMAC-01 同窗, Native-02+OMAC-02 同窗), protocol.md 已于 2026-08-20 修订并重新冻结。禁止同一 arm 并发与四样本全并发
 
 ## 已定案的决策 (不再重议)
