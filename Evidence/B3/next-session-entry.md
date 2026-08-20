@@ -20,7 +20,7 @@
 1. **公共前置已就绪**：fixtures-v1（4 冻结文件）、`.omac/s04/root-issue-body.md`（共同正文）、weekly agents 已设 OMAC env。
 2. **Native-02**: 建根 issue（正文+4 附件）→ 指派周报 squad → leader 自动评论区委派。
 3. **OMAC-02**: 建根 issue → 复制 `.omac/s04-omac-01.yaml` 为 `-02`（改 title/source_issues/清状态，collect objective 保留模板句）→ `nohup bash .omac/s04-driver.sh .omac/s04-omac-02.yaml .omac/s04-omac-02.log &`。
-4. **采集**: 每样本 root-issue/runs/usage/run-messages/deliverables/summary 存 `samples/<id>/`；run-messages 格式已确认可用。
+4. **采集**: 每样本 root-issue/runs/usage/run-messages/deliverables/summary 存 `samples/<id>/`；run-messages 格式已确认可用。**逐样本对照 `samples/sample-checklist.md`（A1-A5 + 指标口径模板）勾选验收**。
 
 ## 已定案决策（不再重议）
 
