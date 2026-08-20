@@ -1,0 +1,32 @@
+commands:
+  - cmd: "python -c \"import os,sys;sys.exit(0 if os.path.exists('weekly-report.md') and os.path.getsize('weekly-report.md')>0 else 1)\""
+    exit_code: 0
+    summary: "The delivered weekly report exists and is non-empty (1892 bytes)."
+    business_tests:
+      - acceptance: "weekly-report.md 结构完整(含本周进展/下周计划)"
+        test: "artifact-exists-and-nonempty"
+  - cmd: "python -c \"import sys;c=open('weekly-report.md',encoding='utf-8').read();sys.exit(0 if ('本周进展' in c and '下周计划' in c) else 1)\""
+    exit_code: 0
+    summary: "The delivered report contains both required sections."
+    business_tests:
+      - acceptance: "weekly-report.md 结构完整(含本周进展/下周计划)"
+        test: "required-section-presence"
+  - cmd: "python review-consistency.py"
+    exit_code: 0
+    summary: "All report-specific B1/B2/B3 facts were independently checked against the collect-stage weekly-data deliverable."
+    business_tests:
+      - acceptance: "周报数据与 weekly-data.md 保持一致"
+        test: "review-consistency.py"
+integration_gates:
+  - name: gate1
+    source_of_truth: ["weekly-report.md"]
+    delivery_goal: "周报评审通过并定稿"
+    commands:
+      - cmd: "python -c \"import os,sys;sys.exit(0 if os.path.exists('weekly-report.md') and os.path.getsize('weekly-report.md')>0 else 1)\""
+        exit_code: 0
+    metrics: {}
+    artifacts: ["weekly-report.md"]
+pr_base: null
+coverage: 100
+env_setup:
+  - "Downloaded the sealed collect and write content deliverables through the Multica attachment CLI into the audit directory."
