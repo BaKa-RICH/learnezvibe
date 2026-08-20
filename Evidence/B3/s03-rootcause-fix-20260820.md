@@ -3,7 +3,7 @@
 > 执行时间: 2026-08-20  
 > 执行者: Claude (诊断 + 修复 session)  
 > 前置: `session-handoff-20260819.md` (上一 session 的交接, 其根因猜测本文已纠正)  
-> 状态: **根因已定位, 代码修复已完成并提交 (206f3b4), 真实环境验证待做**
+> 状态: **已收尾 (2026-08-20)** -- 真实环境验证通过 (write/review 过门), 全新 S03 smoke PASS (collect/write/review 三节点一次过门, 见 `smoke/s03-final-pass.md`)
 
 ## 一句话状态
 

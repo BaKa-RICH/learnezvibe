@@ -1,18 +1,19 @@
 # B3 Evidence 文档索引
 
 > 最后更新: 2026-08-20  
-> 当前状态: S03 根因已定位并修复 (代码已提交, mock+全量测试零新增回归), 待真实环境验证
+> 当前状态: **S03 PASS** (全新链路一次过门收敛), S04 正式采样就绪待开跑
 
 ## 快速导航
 
 **新 session 入口**: 先读 `next-session-entry.md` (3 分钟) -> `s03-rootcause-fix-20260820.md` (完整交接)
 
-**当前问题**: S03 smoke 曾失败于 evidence gate -- 根因是 OMAC loop 读回 bug (已修复, commit 206f3b4), 旧交接文档的"agent 没跑 submit"猜测已证伪
+**当前问题**: S04 开跑前两件事 -- ① fixture 注入链路设计 (根 issue -> OMAC collect 接线未验证); ② 执行顺序确认 (协议冻结串行 ABAB, 可改需重新冻结)。详见 next-session-entry.md
 
 ## 目录结构
 
 ### 核心交接文档
-- `s03-rootcause-fix-20260820.md` - **当前主交接** (2026-08-20: 根因定位+修复+验证计划)
+- `s03-rootcause-fix-20260820.md` - 根因定位与修复 (2026-08-20, 已验证收尾)
+- `smoke/s03-final-pass.md` - **S03 最终 PASS 证据** (2026-08-20: 时间线/sha256 链/token 用量)
 - `next-session-entry.md` - 3分钟快速入口
 - `session-handoff-20260819.md` - 上一 session 交接 (历史记录, 根因猜测已被新文档纠正)
 - `code-changes-summary.md` - 代码改动汇总 (S02 阶段)
