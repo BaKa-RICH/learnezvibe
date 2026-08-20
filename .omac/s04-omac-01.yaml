@@ -6,7 +6,7 @@ meta:
   reconcile_audit:
     schema: omac.reconcile-audit/v1
     last_full_scan_at: '2026-08-20T09:32:15Z'
-    completed_interval_ticks: 2
+    completed_interval_ticks: 3
 nodes:
 - id: collect
   worker: weekly-collect
@@ -93,7 +93,7 @@ nodes:
   blocked_by:
   - write
   work_item_id: 6f09473e-07ab-44a5-84e0-52c686a6d173
-  status: in_progress
+  status: done
   contract:
     objective: 评审 weekly-report.md:内容准确、结构完整、数据与 weekly-data.md 一致;通过则定稿
     non_goals:
@@ -127,4 +127,3 @@ nodes:
     delivery_mode: content
     source_of_truth:
     - weekly-report.md
-  recovery_marker: true
