@@ -2,6 +2,7 @@
 
 > 定位:从当前阶段到项目完成的唯一总纲(全景 + 双系统技术对照 + 开发计划)。
 > 最后更新:2026-08-20,反映 B3 已完成、Phase C 启动的当前状态。
+> 🚪 新 session 先读: `项目导航.md` (30 秒入口: 项目故事/文档地图/下一步)。
 
 ---
 
@@ -354,18 +355,47 @@ A: 说明真实集成的复杂性,Mock 测试不够。这是有价值的工程�
 
 ---
 
-## 七、资产索引
+## 七、资产索引（完整文档地图）
+
+### 入口与活文档
 
 | 文档 | 位置 | 管什么 |
 |------|------|--------|
-| 本文档 | D:/agentlearn/learnezvibe/项目总纲-Multica工作流引擎.md | 项目全景+当前状态+开发计划 |
-| B3 交接文档 | Evidence/B3/session-handoff-20260819.md | S02/S03 完整执行历史+问题诊断 |
-| B3 快速入口 | Evidence/B3/next-session-entry.md | 3分钟了解 B3 当前状态 |
-| 学习笔记 | 学习笔记-omca与multica协作机制.md | 机制认知+源码锚点 |
-| 面试准备 | 面试准备-简历问答拆解.md | 简历原文+37问+P0 |
+| 项目导航（先读我） | 项目导航.md | 30 秒入口：项目故事/当前状态/文档地图/下一步 |
+| 本文档（总纲） | 项目总纲-Multica工作流引擎.md | 项目全景+当前状态+开发计划（行动方向） |
+| 学习笔记 | 学习笔记-omca与multica协作机制.md | 机制认知+源码锚点（用户自行维护） |
+| 面试准备 | 面试准备-简历问答拆解.md | 简历原文+37问+P0（用户自行维护） |
 | 排障手册 | omac联调排障手册.md | 故障+环境配置+Windows补丁 |
-| OMAC 源码 | D:/agentlearn/oh-my-multica | 外挂引擎 (当前 HEAD: a605a34) |
-| Multica 源码 | D:/agentlearn/multica | 宿主平台 (Go + Next.js) |
+| 交接想法 | 关于AI交接与文档整理的一些想法.md | 文档整理方法论（用户自行维护） |
+
+### B3 证据（已完成）
+
+| 文档 | 位置 | 管什么 |
+|------|------|--------|
+| S05 结论一页 | Evidence/B3/reports/B3-S05-结论-一页.md | 给用户的一页结论 |
+| S05 硬核明细 | Evidence/B3/reports/B3-S05-四样本对比-硬核明细.md | 4 样本 token/墙钟/步骤/run 数/成功率 |
+| S05 污染披露 | Evidence/B3/reports/B3-S05-污染样本披露.md | Native-02/OMAC-02 单列披露 |
+| 实验合同 | Evidence/B3/protocol.md | 验收标准+公平性合同+修订记录 |
+| 冻结输入 | Evidence/B3/frozen-input.json | revision/fixture 哈希（README/report 被其冻结，勿改） |
+| 冻结 fixture | Evidence/B3/fixtures-v1/ | 4 个冻结输入文件（禁止编辑） |
+| 重跑样本证据 | Evidence/B3/samples/Native-03/、OMAC-03/ | 本次重跑全量证据（checklist/root-issue/runs/runmsg/deliverables/summary） |
+| 第一组+污染样本 | /d/agentlearn/learnezvibe-b3-archive-20260820/samples/ | Native-01/OMAC-01 与 Native-02/OMAC-02（归档目录） |
+
+### 归档（历史）
+
+| 位置 | 内容 |
+|------|------|
+| Evidence/B3/archive/ | S02/S03 中间产物、旧交接信、session-handoff-20260819（S02/S03 执行历史） |
+| Evidence/B3/smoke/ | S03 最终 PASS 证据（s03-final-pass.md） |
+| plan/archive/ | B1/B2/B3 计划 |
+| .omac/archive/ | B3 执行脚本/manifest/运行日志 |
+
+### 代码仓库
+
+| 仓库 | 位置 | 说明 |
+|------|------|--------|
+| OMAC 源码 | D:/agentlearn/oh-my-multica | 外挂引擎（Python CLI，当前 HEAD: a605a34 后含 206f3b4 等修复） |
+| Multica 源码 | D:/agentlearn/multica | 宿主平台（Go + Next.js） |
 
 ---
 
@@ -386,16 +416,18 @@ A: 说明真实集成的复杂性,Mock 测试不够。这是有价值的工程�
 
 ### 8.2 后续阶段
 
-**B4/C**: 取决于 B3 的路径选择
+**Phase C** (当前): 格式冻结 — 写《流程定义格式规范》
+- 从 B3 manifest / protocol / verification yaml 抽象
+- 必须覆盖顺利路径 + 返工/收口路径
+- 产出作为 Phase D 输入规格
 
-**Phase D**: 
-- B3 完成后开始
+**Phase D**: 内核实现 (Go)
+- B3 完成后开始 (Phase C 产出后)
 - 预计最耗时的阶段
-- 需要本地 Multica 环境
+- 子阶段 D1-D6; 需要本地 Multica 环境
 
-**Phase E**:
+**Phase E**: 平台整合
 - Phase D 完成后
-- 平台整合
 - 最终产品形态
 
 ---
