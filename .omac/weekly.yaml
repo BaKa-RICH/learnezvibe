@@ -3,7 +3,7 @@ meta:
   reconcile_audit:
     schema: omac.reconcile-audit/v1
     last_full_scan_at: '2026-08-20T04:04:36Z'
-    completed_interval_ticks: 19
+    completed_interval_ticks: 20
 nodes:
 - id: collect
   worker: weekly-collect
@@ -48,7 +48,7 @@ nodes:
   blocked_by:
   - collect
   work_item_id: ba05306d-70ca-429f-b11b-687ebbd5b996
-  status: in_progress
+  status: done
   contract:
     objective: 基于 weekly-data.md 撰写周报 weekly-report.md,包含"本周进展"与"下周计划"两个小节
     non_goals:
@@ -82,13 +82,12 @@ nodes:
     delivery_mode: content
     source_of_truth:
     - weekly-report.md
-  recovery_marker: true
 - id: review
   worker: weekly-review
   blocked_by:
   - write
-  work_item_id: null
-  status: blocked
+  work_item_id: 3a755ef4-c557-4e93-996f-df3d8aefc07f
+  status: in_progress
   contract:
     objective: 评审 weekly-report.md:内容准确、结构完整、数据与 weekly-data.md 一致;通过则定稿
     non_goals:
@@ -122,3 +121,4 @@ nodes:
     delivery_mode: content
     source_of_truth:
     - weekly-report.md
+  recovery_marker: true
