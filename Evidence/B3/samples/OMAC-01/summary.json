@@ -54,5 +54,20 @@
   "notes": [
     "codex 故障期 4 个空/截断 run 不计入计量 (d6de631e/a82ca56e/def42bc3/cf600ccc)",
     "f34cb5e0(engine missing) 不计入; 计量 run = 3 节点各 1 个"
-  ]
+  ],
+  "steps_tool_use_total": 91,
+  "run_msg_totals": {
+    "cba6ee44": {
+      "msgs": 80,
+      "tool_use": 41
+    },
+    "e5123673": {
+      "msgs": 57,
+      "tool_use": 25
+    },
+    "20353f07": {
+      "msgs": 60,
+      "tool_use": 25
+    }
+  }
 }
