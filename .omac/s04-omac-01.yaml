@@ -6,7 +6,7 @@ meta:
   reconcile_audit:
     schema: omac.reconcile-audit/v1
     last_full_scan_at: '2026-08-20T08:21:45Z'
-    completed_interval_ticks: 4
+    completed_interval_ticks: 5
 nodes:
 - id: collect
   worker: weekly-collect
