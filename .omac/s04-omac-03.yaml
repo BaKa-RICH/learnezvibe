@@ -5,8 +5,8 @@ meta:
     label: B3 冻结 fixture
   reconcile_audit:
     schema: omac.reconcile-audit/v1
-    last_full_scan_at: '2026-08-20T12:31:09Z'
-    completed_interval_ticks: 9
+    last_full_scan_at: '2026-08-20T13:04:04Z'
+    completed_interval_ticks: 0
 nodes:
 - id: collect
   worker: weekly-collect
