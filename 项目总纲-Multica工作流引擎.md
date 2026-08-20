@@ -57,8 +57,8 @@
 ```
 ✅ S01: 冻结实验合同与输入
 ✅ S02: Content 模式前置实现 (代码完成, 测试通过)
-❌ S03: Desktop smoke 测试 (失败 - evidence gate 问题)
-⏸️  S04: 4个正式样本 (等待 S03)
+✅ S03: Desktop smoke 测试 (2026-08-20 PASS - 全新链路一次过门收敛)
+⏸️  S04: 4个正式样本 (就绪待开跑, 执行方式=配对并发)
 ⏸️  S05: 数据分析 (等待 S04)
 ```
 
@@ -68,13 +68,12 @@
 - 测试: 定向测试 12/12 通过, 基线对比零新增回归
 - 修复: 1个旧 bug (work read CRLF 问题)
 
-**S03 问题** (当前阻塞):
-- 两次 smoke 测试都失败在 OMAC evidence gate
-- 错误: "Worker evidence gate: verification is required"
-- Agent 上传了附件,但 OMAC 拒绝
-- 问题比 protocol 文本更深,可能在 submit 流程或 evidence gate 验证逻辑
+**S03 结论** (2026-08-20 PASS):
+- 根因已定案: OMAC loop 读回 bug——complete-unsealed 收口分支没 hydrate verification 附件,合法提交被误判 `verification is required`。不是 agent 问题。
+- 修复: `206f3b4` 补 hydration + 回归测试, 全量 101 失败基线零新增。
+- 验证: 真实环境 write/review 过门 + 全新 smoke 三节点一次过门, 跨节点数据真实流动。
 
-**详细证据**: `Evidence/B3/session-handoff-20260819.md`
+**详细证据**: `Evidence/B3/s03-rootcause-fix-20260820.md`、`Evidence/B3/smoke/s03-final-pass.md`、`Evidence/B3/交接信-S04.md`
 
 ---
 

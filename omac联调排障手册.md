@@ -2,7 +2,7 @@
 
 > 适用环境:Windows + Git Bash + PowerShell + multica CLI v0.4.26 + oh-my-multica(omca) v1.0.0 + uv + codex agent
 > 本文档记录联调过程中遇到的全部问题、根因与正确解法。
-> 最后更新: 2026-08-19 (新增问题 20-23)
+> 最后更新: 2026-08-20 (问题 20 根因定案为 hydration bug, 总览表补齐 20-24, 新增问题 24)
 > 原则:**先看现场(日志/文件/命令输出),再下结论;所有结论基于源码核实,不靠猜。**
 
 ---
@@ -19,7 +19,7 @@ omca(oh-my-multica)是一个 Python 编排引擎,通过 multica CLI 指挥 Multi
 
 ---
 
-## 1. 问题总览表(23 个,按出现顺序)
+## 1. 问题总览表(24 个,按出现顺序)
 
 | # | 阶段 | 问题 | 根因类别 | 一句话修复 |
 |---|---|---|---|---|
@@ -42,6 +42,11 @@ omca(oh-my-multica)是一个 Python 编排引擎,通过 multica CLI 指挥 Multi
 | 17 | 测试 | mock 引擎 `dag run` 节点反复 blocked("Merge confirmation failed"/sealed delivery 报错) | 配置传导 | merge 命令跟随 config.yaml 的 engine 键,`--engine mock` 覆盖不传导;用隔离测试场 mocksite/ |
 | 18 | 测试 | 本地跑 omac 单测报 `No module named 'pytest'` | 测试环境缺失 | `uv pip install pytest --python .venv/Scripts/python.exe` |
 | 19 | 测试 | Windows 本地全量回归 88 条预存失败,无法"全绿" | 环境基线 | 回归判定改"相对基线零新增":git stash 对比改动前后失败清单(comm -23 为空即过) |
+| 20 | 集成 | Agent 上传附件但 OMAC evidence gate 拒绝 | OMAC 读回 bug | 修复 `206f3b4`: complete-unsealed 收口前补 hydrate verification (详见问题 20) |
+| 21 | 集成 | Content 模式 protocol 冲突 (Contract vs Protocol) | 生成逻辑 | dispatch.py 按 delivery_mode 动态选 protocol (a605a34) |
+| 22 | 集成 | OMAC 记住旧 DAG 状态需要 abandon | 状态持久化 | `omac node abandon` 或关 issue 后重跑 |
+| 23 | 集成 | 如何验证 agent 是否正确运行 submit | 排查方法 | 四层验证: run 日志/submit 模板/评论附件/工作项状态 |
+| 24 | 集成 | `dag check` 评审流程无限轮询挂死 | OMAC 轮询 bug | reviewer 只发文本 verdict 不写 review_verdict 元数据;规避 `--no-review` 或直接 dag tick (详见问题 24) |
 
 ---
 
@@ -323,19 +328,12 @@ omca(oh-my-multica)是一个 Python 编排引擎,通过 multica CLI 指挥 Multi
   - Agent 发表了完成评论
   - 但 OMAC 判定: `node_failed: Worker evidence gate: verification is required`
   - 两次尝试 (collect, write) 都是同样错误
-- **根因**: 待查 (当前假设 70%: Agent 没有正确运行 `omac work submit`)
-- **已验证的事实**:
-  - ✅ Protocol 文本已修复为 content 模式
-  - ✅ Agent 收到正确指令
-  - ✅ Agent 上传了附件
-  - ❌ OMAC evidence gate 仍然拒绝
-- **调查方向**:
-  1. 查看 agent run 的完整日志,确认是否运行了 `omac work submit`
-  2. 检查 submit 命令模板: `omac work show <work-item-id> --output json | grep submit`
-  3. 下载并分析 verification 附件格式
-  4. 查看 OMAC evidence gate 源码 (`src/omac/core/evidence.py`)
-- **详细分析**: `Evidence/B3/smoke/s03-retry-failed.md`
-- **通用教训**: 附件上传 ≠ 正确提交; OMAC 可能要求特定的 submit API 调用
+- **根因** (2026-08-20 已定案): OMAC loop 读回 bug——`complete-unsealed` 收口分支没 hydrate verification 附件。**不是 agent 的问题**。早先"70% agent 没跑 submit"的猜测已被证伪: 用真实平台数据 (WEEK-13) 复现, agent 的 submit 完全合法 (metadata 有 verification_ref/deliverable_ref, uploader_type=agent), verification 数据直接喂证据门是 0 错误。
+- **bug 链条**: dispatch 写 handoff intent → reconcile 的 hydration plan 对 handoff 只预载 CONTRACT (PR 形态假设封印观察会自读附件) → content 分支 complete-unsealed 免封印不读附件 → DONE 分支证据门在 verification=None 上误判 `verification is required`。
+- **修复** (commit `206f3b4`): collect_results 的 complete-unsealed 分支清 handoff 后补调 `_hydrate_worker_collect_evidence` (与 PR 封印路径 `_finalize_worker_handoff_delivery` 同款调用)。回归测试 `test_content_delivery_handoff_collect_hydrates_verification_before_gate`, 全量 101 失败基线零新增。
+- **验证**: 真实环境 write/review 过门 + 全新 S03 smoke 三节点一次过门 (零 gate 失败评论)。
+- **详细分析**: `Evidence/B3/s03-rootcause-fix-20260820.md`、`Evidence/B3/smoke/s03-final-pass.md`
+- **通用教训**: 附件上传且 metadata ref 正确 ≠ 证据门通过; 引用式附件需要"搬运"(hydrate) 才进得了 gate, 新增交付捷径时必须同步搬运逻辑。
 
 #### 问题 21: Content 模式 protocol 冲突 (Contract vs Protocol)
 
@@ -415,6 +413,28 @@ omca(oh-my-multica)是一个 Python 编排引擎,通过 multica CLI 指挥 Multi
   - 节点状态变为 done ✅
   - **如果前两个 ✅ 但后两个 ❌**: 说明附件上传了,但没有正确 submit
 - **通用教训**: 需要多层次验证,不能只看表面状态
+
+#### 问题 24: `dag check` 评审流程无限轮询挂死
+
+- **现象** (2026-08-20, WEEK-11/15 两次复现):
+  - `omac dag check <manifest>` 对新建 manifest 跑 lint 后进入"plan-check 评审"流程
+  - 创建 `[DAG:plan-check]` issue 并派发给 reviewer agent (代码评审与开发助手)
+  - reviewer 在评论里写了 "Verdict: REJECT" 文本
+  - 但命令**不退出**, `while True` 无限轮询, 前台挂死 44 分钟 (直到人工中止)
+- **根因** (`src/omac/pipeline/review.py` `run_review`):
+  - 轮询循环只认 work item 的结构化 `review_verdict` 元数据 (pass/pass-with-nits/reject)
+  - 该 reviewer agent 只发文本评论, **从不写 `review_verdict` 元数据**
+  - `while True` 轮询**无超时、无人工逃生口** → 永远等一个不会来的字段
+  - WEEK-11 (2026-08-19) 同样: agent 只交 deliverable 附件, `review_verdict` 空, 当时也是挂死后人工处理
+- **规避方式**:
+  ```bash
+  # 只做 lint,跳过 agent 评审 (manifest 是拷贝/已验证时用)
+  omac dag check <manifest> --no-review
+  # 或干脆跳过 check,直接跑 (dag run/tick 不依赖 check 通过)
+  omac dag tick <manifest>
+  ```
+- **建议**: 作为 OMAC backlog bug 修复——`run_review` 轮询加超时 + 检测 reviewer 未按协议提交时给出人工逃生口 (或校验 reviewer 必须走 `omac work submit` 结构化提交)
+- **通用教训**: 命令可能远比名字暗示的复杂; `check` 不是静态校验而是完整评审流程, 涉及平台/agent 的命令一律带 timeout 或后台跑, 没读过源码先读源码
 
 ---
 
