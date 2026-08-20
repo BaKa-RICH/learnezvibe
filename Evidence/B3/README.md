@@ -5,9 +5,9 @@
 
 ## 快速导航
 
-**新 session 入口**: 先读 `next-session-entry.md` (3 分钟) -> `s03-rootcause-fix-20260820.md` (完整交接)
+**新 session 入口**: 先读 `交接信-S04.md` (下个 session 的第一封信) -> `next-session-entry.md` (3 分钟速查)
 
-**当前问题**: S04 开跑前两件事 -- ① fixture 注入链路设计 (根 issue -> OMAC collect 接线未验证); ② 执行顺序确认 (协议冻结串行 ABAB, 可改需重新冻结)。详见 next-session-entry.md
+**当前问题**: S04 开跑前置 -- ① fixture 注入链路设计 (根 issue -> OMAC collect 接线未验证); ② 执行顺序已定案为配对并发 (protocol.md 已修订)。详见交接信-S04.md / next-session-entry.md
 
 ## 目录结构
 
