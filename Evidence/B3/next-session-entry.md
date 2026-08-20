@@ -1,47 +1,45 @@
 # 下一 Session 快速入口
 
-> 3 分钟了解当前状态，然后读主交接文档
+> 3 分钟了解当前状态, 然后读主文档
 
 ## 当前状态 (一句话)
 
-**S02 代码完成且测试通过，S03 smoke 两次执行都失败在 OMAC evidence gate，根本原因比 protocol 文本更深。**
+**S03 失败根因已定位并修复 (OMAC loop 读回 bug, 非 agent 问题), 代码已提交 (oh-my-multica `206f3b4`) 且 mock+全量测试零新增回归, 只差真实环境验证。**
 
-## 核心问题
+## 下一步 (下个 session 第一个动作)
 
-Agent 收到了正确的 content 模式指令，也上传了 verification 和 deliverable 附件，但 OMAC 的 evidence gate 仍然拒绝，错误: "verification is required"。
+对 WEEK-13 执行真实环境验证 (agent 的合法提交还在平台上):
 
-## 下一步选项 (3选1)
+```bash
+cd D:\agentlearn\learnezvibe
+omac node retry .omac/weekly.yaml write
+omac dag run .omac/weekly.yaml --max-rounds 20 --max-minutes 30
+```
 
-**A. 继续修复 content 模式** - 深入分析 evidence gate 源码和 agent 实际行为 (~2-4小时)
-
-**B. 降级到 PR 模式** - 修改 weekly.yaml 为 `delivery_mode: pr`，快速完成 B3 数据采集
-
-**C. 重新评估方案** - 可能需要更大的架构调整
+通过判定: write 节点收敛 done, 无 "Evidence gate failed" 评论。通过后清理旧 issues、跑全新完整 S03 smoke, 全链路过即 S03 完成, 进入 S04 正式采样。
 
 ## 详细信息
 
-**主交接文档**: `session-handoff-20260819.md`
+**主文档 (本 session 交接)**: `s03-rootcause-fix-20260820.md` -- 根因链条、修复内容、验证状态、测试基线口径 (全量 101 / 定向 9 两套)、失败排查入口
 
 **文档索引**: `README.md`
-
-**关键证据**:
-- S03 第一次失败: `smoke/s03-final-result.md`
-- S03 修复后重试: `smoke/s03-retry-failed.md`
-- S02 验收报告: `s02-gate-verdict.md`
 
 ## Git Commits
 
 **oh-my-multica**:
 ```
+206f3b4 - fix(content): complete-unsealed 收口前补 hydrate worker verification  ← 本 session
 a605a34 - fix(content): 修复 content 模式 protocol 生成
 ab9d0fe - feat(content): S02 content 交付前置实现
 ```
 
-**learnezvibe**:
-```
-4915d33 - docs(B3): S02-S03 完整证据链和分析文档
-```
+**learnezvibe**: 本 session 新增 `Evidence/B3/s03-rootcause-fix-20260820.md`
+
+## 注意
+
+- 旧文档 `session-handoff-20260819.md` 的根因猜测 (70% agent 没跑 submit) **已被证伪**, 以新文档为准
+- 旧的"三选一"决策 (修复 content / 降级 PR / 混合) 已关闭: **不需要降级 PR 模式**
 
 ---
 
-**立即开始**: 读 `session-handoff-20260819.md` 了解完整情况
+**立即开始**: 读 `s03-rootcause-fix-20260820.md` 的"待做: 真实环境验证"一节, 然后执行 retry 命令
