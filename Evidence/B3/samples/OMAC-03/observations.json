@@ -1,0 +1,29 @@
+{
+  "sample_id": "OMAC-03",
+  "events": [
+    {
+      "ts": "2026-08-20T12:31:02",
+      "event": "run:collect",
+      "run_id": "01a01f27",
+      "status": "completed",
+      "started_at": "2026-08-20T12:31:02Z",
+      "completed_at": "2026-08-20T12:44:27Z"
+    },
+    {
+      "ts": "2026-08-20T12:46:44",
+      "event": "run:write",
+      "run_id": "01a01f35",
+      "status": "completed",
+      "started_at": "2026-08-20T12:46:44Z",
+      "completed_at": "2026-08-20T12:53:22Z"
+    },
+    {
+      "ts": "2026-08-20T12:57:59",
+      "event": "run:review",
+      "run_id": "01a01f3f",
+      "status": "completed",
+      "started_at": "2026-08-20T12:57:59Z",
+      "completed_at": "2026-08-20T13:05:01Z"
+    }
+  ]
+}

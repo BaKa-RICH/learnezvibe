@@ -1,0 +1,62 @@
+{
+  "sample_id": "Native-03",
+  "final_result": "SUCCESS",
+  "root_issue": {
+    "id": "01a01f0e-44d0-729a-9fad-14c9d0fa6e1c",
+    "identifier": "WEEK-30",
+    "final_status": "in_review"
+  },
+  "runs": {
+    "total": 7,
+    "leader": 4,
+    "members": 3
+  },
+  "wall_clock": {
+    "members_only_seconds": "0:14:17",
+    "all_runs_seconds": "0:17:36"
+  },
+  "usage": {
+    "members_only": {
+      "total_input_tokens": 161685,
+      "total_output_tokens": 13025,
+      "total_cache_read_tokens": 1215232,
+      "total_cache_write_tokens": 0,
+      "total_tokens": 1389942
+    },
+    "leader_extra": {
+      "total_input_tokens": 125180,
+      "total_output_tokens": 7231,
+      "total_cache_read_tokens": 647168,
+      "total_cache_write_tokens": 0,
+      "total_tokens": 779579
+    },
+    "all_including_leader": {
+      "total_input_tokens": 286865,
+      "total_output_tokens": 20256,
+      "total_cache_read_tokens": 1862400,
+      "total_cache_write_tokens": 0,
+      "total_tokens": 2169521
+    }
+  },
+  "step_counts": {
+    "members_only": 113,
+    "all_runs": 197
+  },
+  "deliverables": {
+    "weekly-data.md": {
+      "bytes": 4318,
+      "sha256": "8daac0ffb84ff49178d9a7472a80e917a2abf649f7a24fd6bad38470c0edc989"
+    },
+    "weekly-report.md": {
+      "bytes": 2462,
+      "sha256": "6f9be59f0da9c39d129ccd4fcfddfc580f633ea1f61c3840726701e690e8fec8"
+    }
+  },
+  "canary1": {
+    "no_omac_issue_refs_in_collect_runmsg": true,
+    "no_week2x_refs": true,
+    "no_runmsg_01a0_refs": true,
+    "weekly_data_hash_novel": true,
+    "root_issue_terminal": true
+  }
+}

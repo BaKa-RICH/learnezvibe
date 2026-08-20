@@ -1,0 +1,28 @@
+commands:
+  - cmd: "python -c \"import os,sys;sys.exit(0 if os.path.exists('weekly-report.md') and os.path.getsize('weekly-report.md')>0 else 1)\""
+    exit_code: 0
+    summary: "weekly-report.md exists and is non-empty"
+    business_tests:
+      - acceptance: "weekly-report.md 存在且内容非空"
+        test: "contract verification command 1"
+  - cmd: "python -c \"import sys;c=open('weekly-report.md',encoding='utf-8').read();sys.exit(0 if ('本周进展' in c and '下周计划' in c) else 1)\""
+    exit_code: 0
+    summary: "weekly-report.md contains both required sections"
+    business_tests:
+      - acceptance: "weekly-report.md 包含本周进展与下周计划小节"
+        test: "contract verification command 2"
+integration_gates:
+  - name: gate1
+    source_of_truth:
+      - weekly-report.md
+    delivery_goal: "周报草稿已生成且结构完整"
+    commands:
+      - cmd: "python -c \"import os,sys;sys.exit(0 if os.path.exists('weekly-report.md') and os.path.getsize('weekly-report.md')>0 else 1)\""
+        exit_code: 0
+    metrics: {}
+    artifacts:
+      - weekly-report.md
+pr_base: null
+coverage: 100
+env_setup:
+  - "No environment setup required; content-only Markdown deliverable"

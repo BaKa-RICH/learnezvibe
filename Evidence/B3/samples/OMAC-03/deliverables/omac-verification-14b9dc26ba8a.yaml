@@ -1,0 +1,34 @@
+commands:
+  - cmd: "python -c \"import os,sys;sys.exit(0 if os.path.exists('weekly-report.md') and os.path.getsize('weekly-report.md')>0 else 1)\""
+    exit_code: 0
+    summary: "weekly-report.md exists and is non-empty."
+    business_tests:
+      - acceptance: "weekly-report.md 结构完整(含本周进展/下周计划)"
+        test: "weekly-report.md existence and non-empty check"
+  - cmd: "python -c \"import sys;c=open('weekly-report.md',encoding='utf-8').read();sys.exit(0 if ('本周进展' in c and '下周计划' in c) else 1)\""
+    exit_code: 0
+    summary: "Both required report sections are present."
+    business_tests:
+      - acceptance: "weekly-report.md 结构完整(含本周进展/下周计划)"
+        test: "weekly-report.md section-presence check"
+  - cmd: "python -c \"import subprocess,sys; from pathlib import Path; data=subprocess.check_output(['git','show','origin/agent/weekly-collect/62a4df67:weekly-data.md'],text=True,encoding='utf-8'); items=[line[2:] for line in data.splitlines() if line.startswith('- ')]; report=Path('weekly-report.md').read_text(encoding='utf-8'); print({'source_items':len(items),'missing_items':[x for x in items if x not in report]}); raise SystemExit(any(x not in report for x in items))\""
+    exit_code: 0
+    summary: "All 4 upstream weekly-data.md items are present in weekly-report.md; missing_items is empty."
+    business_tests:
+      - acceptance: "周报数据与 weekly-data.md 保持一致"
+        test: "upstream weekly-data item containment check"
+integration_gates:
+  - name: gate1
+    source_of_truth:
+      - weekly-report.md
+    delivery_goal: "周报评审通过并定稿"
+    commands:
+      - cmd: "python -c \"import os,sys;sys.exit(0 if os.path.exists('weekly-report.md') and os.path.getsize('weekly-report.md')>0 else 1)\""
+        exit_code: 0
+    metrics: {}
+    artifacts:
+      - weekly-report.md
+pr_base: null
+coverage: 100
+env_setup:
+  - "Checked upstream source data with git show origin/agent/weekly-collect/62a4df67:weekly-data.md."

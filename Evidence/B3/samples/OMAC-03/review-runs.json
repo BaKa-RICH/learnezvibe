@@ -1,0 +1,56 @@
+[
+  {
+    "agent_id": "f1657953-35f3-4abc-8ed8-083f0a8932fc",
+    "attempt": 1,
+    "attribution": {
+      "evidence": {
+        "kind": "issue_assignment",
+        "ref_id": "01a01f3e-3ff7-7cf6-882b-22c9a2656ded"
+      },
+      "initiator": {
+        "email": "lyx15915496632@gmail.com",
+        "id": "5cf4bb5e-409f-452e-8769-cb82367f6e15",
+        "name": "lyx"
+      },
+      "originator": {
+        "email": "lyx15915496632@gmail.com",
+        "id": "5cf4bb5e-409f-452e-8769-cb82367f6e15",
+        "name": "lyx"
+      },
+      "precise": true,
+      "source": "direct_human"
+    },
+    "completed_at": "2026-08-20T13:05:01Z",
+    "created_at": "2026-08-20T12:57:57Z",
+    "delivered_comment_ids": [],
+    "dispatched_at": "2026-08-20T12:57:57Z",
+    "error": null,
+    "id": "01a01f3f-e911-70e8-ac69-a945a9152799",
+    "issue_id": "01a01f3e-3ff7-7cf6-882b-22c9a2656ded",
+    "kind": "direct",
+    "max_attempts": 2,
+    "priority": 0,
+    "relative_work_dir": "466eb7c0-2554-45e6-91a8-6890663bb359/01a01f3f/workdir",
+    "result": {
+      "output": "周报评审已通过并定稿。`weekly-report.md` 已生成，包含“本周进展”和“下周计划”两个小节；已逐条核对上游 `weekly-data.md` 的 4 条数据，全部一致。合同验证命令、结构检查及数据一致性检查均通过，OMAC 提交已确认完成。",
+      "pr_url": "",
+      "session_id": "01a01f3f-d0b1-7ec1-9840-b9eb6c08cf24",
+      "work_dir": "C:\\Users\\liangyunxuan\\multica_workspaces_desktop-api.multica.ai\\466eb7c0-2554-45e6-91a8-6890663bb359\\01a01f3f\\workdir"
+    },
+    "runtime_id": "82d89dc0-7821-4e62-8708-9ca861bd703a",
+    "started_at": "2026-08-20T12:57:59Z",
+    "status": "completed",
+    "usage": [
+      {
+        "cache_read_tokens": 391424,
+        "cache_write_tokens": 0,
+        "input_tokens": 177780,
+        "model": "gpt-5.6-terra",
+        "output_tokens": 4669,
+        "provider": "codex"
+      }
+    ],
+    "work_dir": "C:\\Users\\liangyunxuan\\multica_workspaces_desktop-api.multica.ai\\466eb7c0-2554-45e6-91a8-6890663bb359\\01a01f3f\\workdir",
+    "workspace_id": "466eb7c0-2554-45e6-91a8-6890663bb359"
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "agent_id": "5e1d1f5b-ef9d-4757-8a1d-15ad24f42258",
+    "attempt": 1,
+    "attribution": {
+      "evidence": {
+        "kind": "issue_assignment",
+        "ref_id": "01a01f25-fa61-7137-ab6a-4d1daeb11974"
+      },
+      "initiator": {
+        "email": "lyx15915496632@gmail.com",
+        "id": "5cf4bb5e-409f-452e-8769-cb82367f6e15",
+        "name": "lyx"
+      },
+      "originator": {
+        "email": "lyx15915496632@gmail.com",
+        "id": "5cf4bb5e-409f-452e-8769-cb82367f6e15",
+        "name": "lyx"
+      },
+      "precise": true,
+      "source": "direct_human"
+    },
+    "completed_at": "2026-08-20T12:44:27Z",
+    "created_at": "2026-08-20T12:31:00Z",
+    "delivered_comment_ids": [],
+    "dispatched_at": "2026-08-20T12:31:00Z",
+    "error": null,
+    "id": "01a01f27-3ba3-783f-b644-4e2e8d633890",
+    "issue_id": "01a01f25-fa61-7137-ab6a-4d1daeb11974",
+    "kind": "direct",
+    "max_attempts": 2,
+    "priority": 0,
+    "relative_work_dir": "466eb7c0-2554-45e6-91a8-6890663bb359/01a01f27/workdir",
+    "result": {
+      "output": "已完成并提交 `weekly-data.md`：\n\n- 从根 issue 下载了 4 个冻结附件。\n- 已根据 `Evidence/B3/frozen-input.json` 核对文件大小与 SHA-256，全部匹配。\n- 汇总了 5 条本周要点，覆盖 B3 状态、B1/B2 发现及 `collect -\u003e write -\u003e review` 流程验证。\n- 两条验收命令均通过。\n- OMAC 提交成功，任务已进入 `done`。",
+      "pr_url": "",
+      "session_id": "01a01f27-244d-7c61-947d-e26cc27f6b21",
+      "work_dir": "C:\\Users\\liangyunxuan\\multica_workspaces_desktop-api.multica.ai\\466eb7c0-2554-45e6-91a8-6890663bb359\\01a01f27\\workdir"
+    },
+    "runtime_id": "82d89dc0-7821-4e62-8708-9ca861bd703a",
+    "started_at": "2026-08-20T12:31:02Z",
+    "status": "completed",
+    "usage": [
+      {
+        "cache_read_tokens": 2291456,
+        "cache_write_tokens": 0,
+        "input_tokens": 290587,
+        "model": "gpt-5.6-terra",
+        "output_tokens": 16636,
+        "provider": "codex"
+      }
+    ],
+    "work_dir": "C:\\Users\\liangyunxuan\\multica_workspaces_desktop-api.multica.ai\\466eb7c0-2554-45e6-91a8-6890663bb359\\01a01f27\\workdir",
+    "workspace_id": "466eb7c0-2554-45e6-91a8-6890663bb359"
+  }
+]

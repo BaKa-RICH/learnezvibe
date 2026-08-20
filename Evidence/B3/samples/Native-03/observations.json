@@ -1,0 +1,110 @@
+{
+  "sample_id": "Native-03",
+  "events": [
+    {
+      "ts": "2026-08-20T12:04:10",
+      "event": "run",
+      "run_id": "01a01f0e-93e1-72fc-91c7-2269bee2b227",
+      "agent": "93b08860-241",
+      "is_leader": true,
+      "status": "completed",
+      "trigger": ""
+    },
+    {
+      "ts": "2026-08-20T12:05:22",
+      "event": "comment",
+      "author": "93b08860-241",
+      "content_prefix": "[@weekly-collect](mention://agent/5e1d1f5b-ef9d-4757-8a1d-15ad24f42258) 请负责 coll",
+      "attachments": 0
+    },
+    {
+      "ts": "2026-08-20T12:05:23",
+      "event": "run",
+      "run_id": "01a01f0f-c69d-7b56-8225-ce381c3bb1e6",
+      "agent": "5e1d1f5b-ef9",
+      "is_leader": false,
+      "status": "completed",
+      "trigger": "[@weekly-collect](mention://agent/5e1d1f5b-ef9d-4757-8a1d-15ad24f42258) 请负责 collect 阶段，先完成并交付 `weekly-data.md`；完成后报告产物位置和数据有效性，供后续 write 阶段使用。"
+    },
+    {
+      "ts": "2026-08-20T12:08:58",
+      "event": "comment",
+      "author": "5e1d1f5b-ef9",
+      "content_prefix": "collect 阶段已完成，`weekly-data.md` 已作为本回复附件交付，供 write 阶段直接使用。\n\n数据有效性：\n- 数据截至 2026-08",
+      "attachments": 1
+    },
+    {
+      "ts": "2026-08-20T12:09:02",
+      "event": "run",
+      "run_id": "01a01f13-113f-7027-ba6c-39f5c98f56a5",
+      "agent": "93b08860-241",
+      "is_leader": true,
+      "status": "completed",
+      "trigger": "collect 阶段已完成，`weekly-data.md` 已作为本回复附件交付，供 write 阶段直接使用。  数据有效性： - 数据截至 2026-08-20，明确区分已验证完成项与未开工计划。 - 事实可回溯到 4 份议题附件；已记录 B1/B2 完成、`tests/test_delivery_mode.py` 7/7 通过，以及 weekly collect -> write -> r…"
+    },
+    {
+      "ts": "2026-08-20T12:10:45",
+      "event": "run",
+      "run_id": "01a01f14-b1be-70f5-aa4b-ab7a359ae75c",
+      "agent": "5f27f945-b32",
+      "is_leader": false,
+      "status": "completed",
+      "trigger": "[@weekly-write](mention://agent/5f27f945-b329-47e5-9498-a643dc2fef37) 请负责 write 阶段；基于本线程附件 `weekly-data.md` 生成并交付 `weekly-report.md`，且必须包含“本周进展”和“下周计划”。完成后说明已使用 collect 产物，供 review 阶段核验。"
+    },
+    {
+      "ts": "2026-08-20T12:10:45",
+      "event": "comment",
+      "author": "93b08860-241",
+      "content_prefix": "[@weekly-write](mention://agent/5f27f945-b329-47e5-9498-a643dc2fef37) 请负责 write ",
+      "attachments": 0
+    },
+    {
+      "ts": "2026-08-20T12:13:49",
+      "event": "comment",
+      "author": "5f27f945-b32",
+      "content_prefix": "write 阶段已完成，`weekly-report.md` 已作为本回复附件交付。\n\n该报告已使用 collect 阶段在本线程交付的 `weekly-dat",
+      "attachments": 1
+    },
+    {
+      "ts": "2026-08-20T12:13:52",
+      "event": "run",
+      "run_id": "01a01f17-8317-70ba-aaff-188df6631e5c",
+      "agent": "93b08860-241",
+      "is_leader": true,
+      "status": "completed",
+      "trigger": "write 阶段已完成，`weekly-report.md` 已作为本回复附件交付。  该报告已使用 collect 阶段在本线程交付的 `weekly-data.md` 作为唯一数据输入，包含“本周进展”和“下周计划”；B3、B4 均明确保留为未开工计划，供 review 阶段核验。"
+    },
+    {
+      "ts": "2026-08-20T12:15:20",
+      "event": "comment",
+      "author": "93b08860-241",
+      "content_prefix": "[@weekly-review](mention://agent/f1657953-35f3-4abc-8ed8-083f0a8932fc) 请负责 revie",
+      "attachments": 0
+    },
+    {
+      "ts": "2026-08-20T12:15:21",
+      "event": "run",
+      "run_id": "01a01f18-e4dc-79b8-80d4-1332569998d2",
+      "agent": "f1657953-35f",
+      "is_leader": false,
+      "status": "completed",
+      "trigger": "[@weekly-review](mention://agent/f1657953-35f3-4abc-8ed8-083f0a8932fc) 请负责 review 阶段；核验本线程的 `weekly-report.md` 是否准确、结构完整，并确认其确实基于 collect 产物。完成后给出明确结论。"
+    },
+    {
+      "ts": "2026-08-20T12:19:16",
+      "event": "comment",
+      "author": "f1657953-35f",
+      "content_prefix": "Review 结论：通过。\n\n已核验本线程的 `weekly-report.md` 与 collect 阶段附件 `weekly-data.md`：\n- 准确性",
+      "attachments": 0
+    },
+    {
+      "ts": "2026-08-20T12:19:19",
+      "event": "run",
+      "run_id": "01a01f1c-7e22-70bf-a136-2fd9afe6a31f",
+      "agent": "93b08860-241",
+      "is_leader": true,
+      "status": "completed",
+      "trigger": "Review 结论：通过。  已核验本线程的 `weekly-report.md` 与 collect 阶段附件 `weekly-data.md`： - 准确性：B1/B2 完成状态、5 个卡点、`delivery_mode`、7/7 测试、mocksite `3/3` 收敛及 `pass` 结论均与 collect 产物一致；B3/B4 始终明确为未开工计划，未被写为已完成。 - 结构完整：报告…"
+    }
+  ]
+}

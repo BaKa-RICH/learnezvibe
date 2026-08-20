@@ -1,0 +1,123 @@
+meta:
+  title: weekly 周报流程(S03 smoke 非计量)
+  reconcile_audit:
+    schema: omac.reconcile-audit/v1
+    last_full_scan_at: '2026-08-20T06:06:06Z'
+    completed_interval_ticks: 0
+nodes:
+- id: collect
+  worker: weekly-collect
+  blocked_by: []
+  work_item_id: 48b7cd31-7395-4ecd-bc03-902672aeac54
+  status: done
+  contract:
+    objective: 收集本周多卡 agent 平台的学习与项目进展,汇总成 3-5 条要点写入 weekly-data.md
+    non_goals:
+    - 不要修改仓库里除 weekly-data.md 以外的其他文件
+    - 不要撰写周报正文(那是 write 节点的职责)
+    verification_commands:
+    - python -c "import os,sys;sys.exit(0 if os.path.exists('weekly-data.md') and
+      os.path.getsize('weekly-data.md')>0 else 1)"
+    - python -c "import sys;c=open('weekly-data.md',encoding='utf-8').read().strip().splitlines();sys.exit(0
+      if len(c)>=3 else 1)"
+    integration_gates:
+    - name: gate1
+      layer: L1
+      delivery_goal: 本周数据已汇总到 weekly-data.md
+      source_of_truth:
+      - weekly-data.md
+      covers:
+      - data
+      acceptance_refs:
+      - weekly-data.md 存在且内容非空、至少含 3 条要点
+      commands:
+      - python -c "import os,sys;sys.exit(0 if os.path.exists('weekly-data.md') and
+        os.path.getsize('weekly-data.md')>0 else 1)"
+      required_metrics: {}
+      artifacts:
+      - weekly-data.md
+    pr_base: null
+    acceptance:
+    - weekly-data.md 存在且内容非空
+    - weekly-data.md 至少包含 3 条本周要点
+    delivery_mode: content
+    source_of_truth:
+    - weekly-data.md
+- id: write
+  worker: weekly-write
+  blocked_by:
+  - collect
+  work_item_id: 6d6d7716-4e98-4da3-87ab-516a9a3dfe9c
+  status: done
+  contract:
+    objective: 基于 weekly-data.md 撰写周报 weekly-report.md,包含"本周进展"与"下周计划"两个小节
+    non_goals:
+    - 不要修改 weekly-data.md 的原始数据内容
+    - 不要新建任何 PR
+    verification_commands:
+    - python -c "import os,sys;sys.exit(0 if os.path.exists('weekly-report.md') and
+      os.path.getsize('weekly-report.md')>0 else 1)"
+    - python -c "import sys;c=open('weekly-report.md',encoding='utf-8').read();sys.exit(0
+      if ('本周进展' in c and '下周计划' in c) else 1)"
+    integration_gates:
+    - name: gate1
+      layer: L1
+      delivery_goal: 周报草稿已生成且结构完整
+      source_of_truth:
+      - weekly-report.md
+      covers:
+      - report
+      acceptance_refs:
+      - weekly-report.md 存在且包含本周进展/下周计划两个小节
+      commands:
+      - python -c "import os,sys;sys.exit(0 if os.path.exists('weekly-report.md')
+        and os.path.getsize('weekly-report.md')>0 else 1)"
+      required_metrics: {}
+      artifacts:
+      - weekly-report.md
+    pr_base: null
+    acceptance:
+    - weekly-report.md 存在且内容非空
+    - weekly-report.md 包含本周进展与下周计划小节
+    delivery_mode: content
+    source_of_truth:
+    - weekly-report.md
+- id: review
+  worker: weekly-review
+  blocked_by:
+  - write
+  work_item_id: 322d8e2a-1220-4855-802b-8d812a89f69b
+  status: done
+  contract:
+    objective: 评审 weekly-report.md:内容准确、结构完整、数据与 weekly-data.md 一致;通过则定稿
+    non_goals:
+    - 不要重写周报正文内容
+    - 不要修改 weekly-data.md
+    verification_commands:
+    - python -c "import os,sys;sys.exit(0 if os.path.exists('weekly-report.md') and
+      os.path.getsize('weekly-report.md')>0 else 1)"
+    - python -c "import sys;c=open('weekly-report.md',encoding='utf-8').read();sys.exit(0
+      if ('本周进展' in c and '下周计划' in c) else 1)"
+    integration_gates:
+    - name: gate1
+      layer: L1
+      delivery_goal: 周报评审通过并定稿
+      source_of_truth:
+      - weekly-report.md
+      covers:
+      - report
+      acceptance_refs:
+      - weekly-report.md 结构完整且与 weekly-data.md 数据一致
+      commands:
+      - python -c "import os,sys;sys.exit(0 if os.path.exists('weekly-report.md')
+        and os.path.getsize('weekly-report.md')>0 else 1)"
+      required_metrics: {}
+      artifacts:
+      - weekly-report.md
+    pr_base: null
+    acceptance:
+    - weekly-report.md 结构完整(含本周进展/下周计划)
+    - 周报数据与 weekly-data.md 保持一致
+    delivery_mode: content
+    source_of_truth:
+    - weekly-report.md

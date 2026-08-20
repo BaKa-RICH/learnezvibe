@@ -1,0 +1,29 @@
+{
+  "sample_id": "OMAC-03",
+  "root_issue": {
+    "id": "01a01f25-ba04-7ad6-a160-8e51443c2046",
+    "identifier": "WEEK-31",
+    "title": "[B3-S04 OMAC-03] weekly 周报流程 (正式计量)",
+    "status": "todo",
+    "created_at": "2026-08-20T12:29:21Z",
+    "description_sha256": "3beb44390fa334b816ef07e76cfd70a8a3be29f6114ebfdd98cded346277f6a1"
+  },
+  "attachments": [
+    {
+      "id": "01a01f25-be6d-7ae0-b66a-afb7f6b60013",
+      "size_bytes": 5297
+    },
+    {
+      "id": "01a01f25-bf99-7209-a0bd-266e1cbb1379",
+      "size_bytes": 18915
+    },
+    {
+      "id": "01a01f25-c168-76fa-82ca-bc269d61d6d2",
+      "size_bytes": 8165
+    },
+    {
+      "id": "01a01f25-c275-7a3b-8182-5b6b1627ca3d",
+      "size_bytes": 4205
+    }
+  ]
+}

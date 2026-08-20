@@ -1,0 +1,24 @@
+commands:
+  - cmd: "python -c \"import os,sys;sys.exit(0 if os.path.exists('weekly-data.md') and os.path.getsize('weekly-data.md')>0 else 1)\""
+    exit_code: 0
+    summary: "passed"
+    business_tests:
+      - { acceptance: "weekly-data.md \u5b58\u5728\u4e14\u5185\u5bb9\u975e\u7a7a", test: "weekly-data-exists" }
+  - cmd: "python -c \"import sys;c=open('weekly-data.md',encoding='utf-8').read().strip().splitlines();sys.exit(0 if len(c)>=3 else 1)\""
+    exit_code: 0
+    summary: "passed"
+    business_tests:
+      - { acceptance: "weekly-data.md \u81f3\u5c11\u5305\u542b 3 \u6761\u672c\u5468\u8981\u70b9", test: "weekly-data-minimum-bullets" }
+integration_gates:
+  - name: gate1
+    source_of_truth: [weekly-data.md]
+    delivery_goal: "\u672c\u5468\u6570\u636e\u5df2\u6c47\u603b\u5230 weekly-data.md"
+    commands:
+      - { cmd: "python -c \"import os,sys;sys.exit(0 if os.path.exists('weekly-data.md') and os.path.getsize('weekly-data.md')>0 else 1)\"", exit_code: 0 }
+    metrics: {}
+    artifacts: [weekly-data.md]
+pr_base: null
+coverage: 100
+env_setup:
+  - "Downloaded four root-issue attachments."
+  - "Verified SHA-256 values against frozen-input.json."

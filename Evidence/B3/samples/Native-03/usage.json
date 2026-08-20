@@ -1,0 +1,12 @@
+{
+  "cost_usd_ticks": 0,
+  "task_count": 7,
+  "total_cache_read_tokens": 1862400,
+  "total_cache_write_tokens": 0,
+  "total_input_tokens": 286865,
+  "total_output_tokens": 20256,
+  "uncosted_cache_read_tokens": 1862400,
+  "uncosted_cache_write_tokens": 0,
+  "uncosted_input_tokens": 286865,
+  "uncosted_output_tokens": 20256
+}

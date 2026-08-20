@@ -1,0 +1,90 @@
+{
+  "sample_id": "OMAC-03",
+  "final_result": "SUCCESS (CONVERGED rc=0)",
+  "root_issue": {
+    "id": "01a01f25-ba04-7ad6-a160-8e51443c2046",
+    "identifier": "WEEK-31"
+  },
+  "nodes": [
+    {
+      "node": "collect",
+      "work_item": "WEEK-32",
+      "run_id": "01a01f27",
+      "status": "done",
+      "started_at": "2026-08-20T12:31:02Z",
+      "completed_at": "2026-08-20T12:44:27Z",
+      "usage": {
+        "input": 290587,
+        "output": 16636,
+        "cache_read": 2291456,
+        "cache_write": 0
+      }
+    },
+    {
+      "node": "write",
+      "work_item": "WEEK-33",
+      "run_id": "01a01f35",
+      "status": "done",
+      "started_at": "2026-08-20T12:46:44Z",
+      "completed_at": "2026-08-20T12:53:22Z",
+      "usage": {
+        "input": 105992,
+        "output": 6584,
+        "cache_read": 953856,
+        "cache_write": 0
+      }
+    },
+    {
+      "node": "review",
+      "work_item": "WEEK-34",
+      "run_id": "01a01f3f",
+      "status": "done",
+      "started_at": "2026-08-20T12:57:59Z",
+      "completed_at": "2026-08-20T13:05:01Z",
+      "usage": {
+        "input": 177780,
+        "output": 4669,
+        "cache_read": 391424,
+        "cache_write": 0
+      }
+    }
+  ],
+  "runs": {
+    "total": 3
+  },
+  "wall_clock_seconds": "0:33:59",
+  "usage": {
+    "total_input_tokens": 574359,
+    "total_output_tokens": 27889,
+    "total_cache_read_tokens": 3636736,
+    "total_cache_write_tokens": 0,
+    "total_tokens": 4238984
+  },
+  "step_counts": {
+    "total_events": 168
+  },
+  "deliverables": {
+    "weekly-data.md (collect)": {
+      "bytes": 602,
+      "sha256": "41cb834b8a54ecd1a72d8dcc378378b3665cec43539308f2be7183430e4d3b0f",
+      "source": "git branch origin/agent/weekly-collect/62a4df67"
+    },
+    "weekly-report.md (write)": {
+      "bytes": 813,
+      "sha256": "f5130fc1ed2fe091f464c6d72fc97aa54653d599704941297fd5978f3b27c969",
+      "source": "write workdir disk file (=deliverable attachment)"
+    },
+    "weekly-report.md (review)": {
+      "bytes": 920,
+      "sha256": "fce9d7bf3c55415e8fcc7ea6d43298ebffd7f0fe63dcab056262049b3d022cc0",
+      "source": "review workdir disk file"
+    }
+  },
+  "canary2": {
+    "write_runmsg_no_native_samples_deliverables_refs": true,
+    "artifact_hashes_novel": true,
+    "review_verification_no_samples_deliverables_paths": true,
+    "three_nodes_no_time_overlap": true,
+    "review_deliverable_self_consistent": true
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "sample_id": "Native-03",
+  "root_issue": {
+    "id": "01a01f0e-44d0-729a-9fad-14c9d0fa6e1c",
+    "identifier": "WEEK-30",
+    "title": "[B3-S04 Native-03] weekly 周报流程 (正式样本)",
+    "status": "todo",
+    "created_at": "2026-08-20T12:03:43Z",
+    "description_sha256": "3beb44390fa334b816ef07e76cfd70a8a3be29f6114ebfdd98cded346277f6a1"
+  },
+  "attachments": [
+    {
+      "id": "01a01f0e-46c7-703e-88c3-80a0faf52e8e",
+      "size_bytes": 5297
+    },
+    {
+      "id": "01a01f0e-47e4-7248-b1f6-4e531da014f2",
+      "size_bytes": 18915
+    },
+    {
+      "id": "01a01f0e-491f-79aa-8f52-a2417445cb09",
+      "size_bytes": 8165
+    },
+    {
+      "id": "01a01f0e-4b20-707a-9637-b30544ca2f25",
+      "size_bytes": 4205
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Created `learnezvibe/weekly-data.md` with five weekly data points from the four downloaded b3-weekly-fixture-v1 root-issue attachments. The attachment sizes and SHA-256 values were checked against `learnezvibe/Evidence/B3/frozen-input.json` before summarization.

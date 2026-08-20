@@ -1,0 +1,101 @@
+[
+  {
+    "agent_id": "5e1d1f5b-ef9d-4757-8a1d-15ad24f42258",
+    "attempt": 1,
+    "attribution": {
+      "delegated_from_task_id": "01a01f0e-93e1-72fc-91c7-2269bee2b227",
+      "evidence": {
+        "kind": "comment",
+        "ref_id": "01a01f0f-c684-716a-a078-d6dbf586fc79"
+      },
+      "initiator": {
+        "email": "lyx15915496632@gmail.com",
+        "id": "5cf4bb5e-409f-452e-8769-cb82367f6e15",
+        "name": "lyx"
+      },
+      "originator": {
+        "email": "lyx15915496632@gmail.com",
+        "id": "5cf4bb5e-409f-452e-8769-cb82367f6e15",
+        "name": "lyx"
+      },
+      "precise": true,
+      "source": "delegation"
+    },
+    "completed_at": null,
+    "created_at": "2026-08-20T12:05:22Z",
+    "delivered_comment_ids": [
+      "01a01f0f-c684-716a-a078-d6dbf586fc79"
+    ],
+    "dispatched_at": "2026-08-20T12:05:22Z",
+    "error": null,
+    "id": "01a01f0f-c69d-7b56-8225-ce381c3bb1e6",
+    "issue_id": "01a01f0e-44d0-729a-9fad-14c9d0fa6e1c",
+    "kind": "comment",
+    "max_attempts": 2,
+    "priority": 0,
+    "relative_work_dir": "466eb7c0-2554-45e6-91a8-6890663bb359/01a01f0f/workdir",
+    "result": null,
+    "runtime_id": "82d89dc0-7821-4e62-8708-9ca861bd703a",
+    "started_at": "2026-08-20T12:05:23Z",
+    "status": "running",
+    "trigger_comment_id": "01a01f0f-c684-716a-a078-d6dbf586fc79",
+    "trigger_summary": "[@weekly-collect](mention://agent/5e1d1f5b-ef9d-4757-8a1d-15ad24f42258) 请负责 collect 阶段，先完成并交付 `weekly-data.md`；完成后报告产物位置和数据有效性，供后续 write 阶段使用。",
+    "work_dir": "C:\\Users\\liangyunxuan\\multica_workspaces\\466eb7c0-2554-45e6-91a8-6890663bb359\\01a01f0f\\workdir",
+    "workspace_id": "466eb7c0-2554-45e6-91a8-6890663bb359"
+  },
+  {
+    "agent_id": "93b08860-2419-4b60-b01f-23225688f18d",
+    "attempt": 1,
+    "attribution": {
+      "evidence": {
+        "kind": "issue_assignment",
+        "ref_id": "01a01f0e-44d0-729a-9fad-14c9d0fa6e1c"
+      },
+      "initiator": {
+        "email": "lyx15915496632@gmail.com",
+        "id": "5cf4bb5e-409f-452e-8769-cb82367f6e15",
+        "name": "lyx"
+      },
+      "originator": {
+        "email": "lyx15915496632@gmail.com",
+        "id": "5cf4bb5e-409f-452e-8769-cb82367f6e15",
+        "name": "lyx"
+      },
+      "precise": true,
+      "source": "direct_human"
+    },
+    "completed_at": "2026-08-20T12:06:02Z",
+    "created_at": "2026-08-20T12:04:04Z",
+    "delivered_comment_ids": [],
+    "dispatched_at": "2026-08-20T12:04:04Z",
+    "error": null,
+    "id": "01a01f0e-93e1-72fc-91c7-2269bee2b227",
+    "is_leader_task": true,
+    "issue_id": "01a01f0e-44d0-729a-9fad-14c9d0fa6e1c",
+    "kind": "direct",
+    "max_attempts": 2,
+    "priority": 0,
+    "relative_work_dir": "466eb7c0-2554-45e6-91a8-6890663bb359/01a01f0e/workdir",
+    "result": {
+      "output": "已将 `WEEK-30` 标记为 `in_progress`，并委派 `weekly-collect` 完成首个 collect 阶段及 `weekly-data.md` 交付。后续阶段将严格按 collect → write → review 推进。",
+      "pr_url": "",
+      "session_id": "01a01f0e-88f7-7521-a717-4f41007f1a4e",
+      "work_dir": "C:\\Users\\liangyunxuan\\multica_workspaces\\466eb7c0-2554-45e6-91a8-6890663bb359\\01a01f0e\\workdir"
+    },
+    "runtime_id": "82d89dc0-7821-4e62-8708-9ca861bd703a",
+    "started_at": "2026-08-20T12:04:10Z",
+    "status": "completed",
+    "usage": [
+      {
+        "cache_read_tokens": 175104,
+        "cache_write_tokens": 0,
+        "input_tokens": 27378,
+        "model": "gpt-5.6-terra",
+        "output_tokens": 1481,
+        "provider": "codex"
+      }
+    ],
+    "work_dir": "C:\\Users\\liangyunxuan\\multica_workspaces\\466eb7c0-2554-45e6-91a8-6890663bb359\\01a01f0e\\workdir",
+    "workspace_id": "466eb7c0-2554-45e6-91a8-6890663bb359"
+  }
+]

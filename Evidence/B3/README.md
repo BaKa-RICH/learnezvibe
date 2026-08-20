@@ -1,79 +1,56 @@
 # B3 Evidence 文档索引
 
-> 最后更新: 2026-08-20  
-> 当前状态: **S04 第一组完成** (Native-01 + OMAC-01 双 SUCCESS), 第二组 (Native-02 + OMAC-02) 待开跑
+> 最后更新: 2026-08-20
+> 当前状态: **B3 已完成** —— 4 有效样本全 SUCCESS（Native-01/03 + OMAC-01/03），S05 分析报告已出，污染样本已排除并单列披露。
 
 ## 快速导航
 
-**新 session 入口**: 先读 `交接信-S04-第二组.md` (下个 session 的第一封信) -> `next-session-entry.md` (3 分钟速查)
+- **结论一页**: `reports/B3-S05-结论-一页.md`（给用户）
+- **硬核明细**: `reports/B3-S05-四样本对比-硬核明细.md`（token/墙钟/步骤/run 数/成功率，Native 双口径）
+- **污染披露**: `reports/B3-S05-污染样本披露.md`（Native-02/OMAC-02，不计入计量）
+- **样本证据**: `samples/Native-03/`、`samples/OMAC-03/`（本次重跑）；第一组 Native-01/OMAC-01 及污染样本在归档目录 `learnezvibe-b3-archive-20260820/samples/`
+- **实验合同**: `protocol.md`（修订记录：同窗串行/新槽 03/污染排除/故障 run 不计入）
+- **冻结输入**: `frozen-input.json`、`fixtures-v1/`
 
-**当前状态**: 第一组双 SUCCESS, 证据在 `samples/Native-01/` + `samples/OMAC-01/` + `samples/pair-01-complete.md`。第二组照抄已验证 recipe (详见交接信-S04-第二组.md)。
+## B3 结果速查（4 有效样本，全 SUCCESS）
+
+| 样本 | total token | 墙钟 | tool_use | 备注 |
+|---|---|---|---|---|
+| Native-01 | 107.4 万（含 leader 291.2 万） | 10m01s（含 leader 13m05s） | 39（全 78） | 第一组 |
+| Native-03 | 139.0 万（含 leader 217.0 万） | 14m17s（含 leader 17m36s） | 49（全 84） | 重跑 |
+| OMAC-01 | 319.8 万 | 23m08s | 91 | 第一组 |
+| OMAC-03 | 423.9 万 | 33m59s | 75 | 重跑 |
 
 ## 目录结构
 
-### 核心交接文档
+### 核心交接文档（已完成，保留为执行史）
 - `s03-rootcause-fix-20260820.md` - 根因定位与修复 (2026-08-20, 已验证收尾)
-- `smoke/s03-final-pass.md` - **S03 最终 PASS 证据** (2026-08-20: 时间线/sha256 链/token 用量)
-- `next-session-entry.md` - 3分钟快速入口
-- `session-handoff-20260819.md` - 上一 session 交接 (历史记录, 根因猜测已被新文档纠正)
-- `code-changes-summary.md` - 代码改动汇总 (S02 阶段)
+- `交接信-S04-第二组.md` / `交接信-S04-第二组重跑.md` - S04 两轮执行交接（历史）
+- `prompt-重跑第二组.md` - 重跑执行 prompt（历史）
+- `next-session-entry.md` - 3分钟快速入口（B3 期间用；B3 已收口，后续以总纲为准）
 
 ### S01 冻结合同
-- `protocol.md` - 实验协议 (验收标准、公平性合同)
+- `protocol.md` - 实验协议 (验收标准、公平性合同、修订记录)
 - `frozen-input.json` - 冻结的输入 (revision, fixture 哈希)
 - `config-snapshot.json` - Agent 配置快照
 
-### S02 前置实现
-- `s02-gate-verdict.md` - S02 基线验证报告 (零新增回归)
-- `baseline-4f1773d.txt` - 基线测试结果
-- `after-s02.txt` - S02 后测试结果
-- `prerequisite-verification.md` - 前置验收记录
-- `s02-fix-plan.md` - Protocol 修复计划
+### S02 前置实现（历史验证记录）
+- `s02-gate-verdict.md`、`baseline-4f1773d.txt`、`after-s02.txt`、`prerequisite-verification.md`、`s02-fix-plan.md`、`code-changes-summary.md`
 
 ### S03 Smoke 测试
-- `smoke/s03-final-result.md` - 第一次执行结果 (发现 protocol 冲突)
-- `smoke/s03-retry-failed.md` - 修复后重试结果 (仍失败, 根因见 s03-rootcause-fix-20260820.md)
-- `smoke/failure-analysis.md` - 失败分析 (当时的初步分析, 根因以新文档为准)
-- `smoke/progress-report.md` - 执行进度
-- `smoke/current-situation.md` - 情况说明
-- `smoke/omac-dag-run-fresh.log` - OMAC 执行日志
-- `smoke/issue-create-result.json` - WEEK-10 创建记录
-- `smoke/issue-description.md` - Smoke issue 描述
+- `smoke/s03-final-pass.md` - S03 最终 PASS 证据
+- 其余 smoke 中间产物已归档
 
-### 其他
-- `S03-smoke-plan.md` - S03 执行计划 (操作手册)
-- `session-status-2026-08-19.md` - 给下一 session 的初步交接
+### S04/S05 证据
+- `samples/Native-03/`、`samples/OMAC-03/` - 重跑样本证据（checklist/root-issue/runs/runmsg/deliverables/summary/observations）
+- `reports/` - S05 三份报告
 
-## Git Commits (oh-my-multica)
+### 归档
+- `archive/` - S03 中间产物、历史交接、旧 session 状态
 
-```
-a605a34 - fix(content): 修复 content 模式 protocol 生成
-ab9d0fe - feat(content): S02 content 交付前置实现
-4f1773d - feat(delivery): B2 交付形态骨架 (基线)
-```
+## 关键发现（B3 全程）
 
-## 关键发现
-
-1. **S02 基线验证**: 零新增回归,修复1个旧bug
-2. **Protocol 冲突**: Contract 说 content, Protocol 说 PR
-3. **Protocol 已修复**: dispatch.py 根据 delivery_mode 动态生成
-4. **仍然失败**: Agent 收到正确指令但 evidence gate 仍拒绝
-5. **根本原因**: 比 protocol 文本更深,可能是 submit 流程或 evidence gate 验证逻辑
-
-## 下一步选项
-
-**A.** 继续修复 content 模式 (分析 evidence gate 源码)
-**B.** 降级到 PR 模式完成 B3
-**C.** 其他方案
-
-## 文件清理记录
-
-已删除:
-- `s02-changes.patch` (已提交 commit,不需要 patch)
-- `pytest-full.txt` (不完整的测试日志)
-- `smoke/quick-summary.txt` (临时文件)
-- `smoke/issue-current-state.json` (空文件)
-- `smoke/runs-initial.json` (空文件)
-- `smoke/omac-dag-run.log` (被更完整的日志替代)
-- `smoke/omac-dag-run-retry.log` (被更完整的日志替代)
-- `smoke/omac-dag-run-clean.log` (被更完整的日志替代)
+1. Mock 通过 ≠ 真实集成成功（S03 教训）
+2. Content 模式真实集成根因：evidence gate hydration bug（206f3b4 修复）
+3. 配对实验的环境共享性污染：跨 arm 串扰 + 跨样本仓库残留 → 同窗串行 + 清场解决
+4. OMAC 确定性 vs Native 声明式 review：约 3 倍 token 换可复算可审计
