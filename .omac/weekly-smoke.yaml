@@ -2,8 +2,8 @@ meta:
   title: weekly 周报流程(S03 smoke 非计量)
   reconcile_audit:
     schema: omac.reconcile-audit/v1
-    last_full_scan_at: '2026-08-20T05:34:39Z'
-    completed_interval_ticks: 9
+    last_full_scan_at: '2026-08-20T06:06:06Z'
+    completed_interval_ticks: 0
 nodes:
 - id: collect
   worker: weekly-collect
@@ -87,7 +87,7 @@ nodes:
   blocked_by:
   - write
   work_item_id: 322d8e2a-1220-4855-802b-8d812a89f69b
-  status: in_progress
+  status: done
   contract:
     objective: 评审 weekly-report.md:内容准确、结构完整、数据与 weekly-data.md 一致;通过则定稿
     non_goals:
@@ -121,4 +121,3 @@ nodes:
     delivery_mode: content
     source_of_truth:
     - weekly-report.md
-  recovery_marker: true
