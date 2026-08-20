@@ -1,0 +1,16 @@
+{
+  "sample": "OMAC-01",
+  "root_issue_id": "d7694427-c278-4a7e-bc41-faa062208e92",
+  "manifest": ".omac/s04-omac-01.yaml",
+  "observations": [
+    {
+      "at": "2026-08-20T08:20:44Z",
+      "event": "OMAC dispatch collect, work_item_id 0ac256e4"
+    },
+    {
+      "at": "2026-08-20T08:52:30Z",
+      "event": "S04 暂停: 用户发现 codex API 故障",
+      "note": "collect 4 runs: d6de631e/def42bc3 空会话, a82ca56e 3msgs 截断, cf600ccc in-flight; 均未交付 weekly-data.md; manifest 停于 collect in_progress"
+    }
+  ]
+}
