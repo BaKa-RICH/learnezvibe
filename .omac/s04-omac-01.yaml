@@ -6,13 +6,13 @@ meta:
   reconcile_audit:
     schema: omac.reconcile-audit/v1
     last_full_scan_at: '2026-08-20T08:59:07Z'
-    completed_interval_ticks: 7
+    completed_interval_ticks: 8
 nodes:
 - id: collect
   worker: weekly-collect
   blocked_by: []
   work_item_id: 0ac256e4-27c2-4cd2-9f52-558be1d9b184
-  status: in_progress
+  status: done
   contract:
     objective: '收集本周数据: 本周数据仅指冻结输入 b3-weekly-fixture-v1。四个冻结文件已作为附件附在根 issue 上(见上游
       source_issues): 交接信-新session.md、项目总纲-Multica工作流引擎.md、Evidence/B1卡点清单.md、Evidence/B2验收记录.md。请从根
@@ -49,13 +49,12 @@ nodes:
     delivery_mode: content
     source_of_truth:
     - weekly-data.md
-  recovery_marker: true
 - id: write
   worker: weekly-write
   blocked_by:
   - collect
-  work_item_id: null
-  status: blocked
+  work_item_id: 792e0348-ed85-43f2-b6dc-b39fea477fa1
+  status: in_progress
   contract:
     objective: 基于 weekly-data.md 撰写周报 weekly-report.md,包含"本周进展"与"下周计划"两个小节
     non_goals:
@@ -89,6 +88,7 @@ nodes:
     delivery_mode: content
     source_of_truth:
     - weekly-report.md
+  recovery_marker: true
 - id: review
   worker: weekly-review
   blocked_by:
