@@ -11,6 +11,21 @@
       "at": "2026-08-20T08:52:30Z",
       "event": "S04 暂停: 用户发现 codex API 故障",
       "note": "collect 4 runs: d6de631e/def42bc3 空会话, a82ca56e 3msgs 截断, cf600ccc in-flight; 均未交付 weekly-data.md; manifest 停于 collect in_progress"
+    },
+    {
+      "at": "2026-08-20T09:06:00Z",
+      "event": "codex 充值修复后恢复: collect 4 runs 全为空会话(故障期), node retry 重置 collect",
+      "note": "驱动重启; collect work_item_id 保留 0ac256e4"
+    },
+    {
+      "at": "2026-08-20T09:12:00Z",
+      "event": "rootfix: 给 weekly-collect/write/review 设 OMAC_ENGINE/WORKSPACE_ID/PROJECT_ID env",
+      "note": "smoke 靠 agent 自设 env 兜底; S04 run f34cb5e0 未自行解决, 报 engine missing。改为 agent 级持久配置(基础设施接线, 不影响模型/thinking/runtime/业务输入)"
+    },
+    {
+      "at": "2026-08-20T09:26:45Z",
+      "event": "collect done (run cba6ee44, 80 msgs)",
+      "note": "fixture 注入链路验证成功: 从根 issue 下载 4 附件, 自算 SHA-256 与 frozen 全一致 (a3553b02/17c5cb0d/40cb15e9/9d744387); 未用 workdir 同名文件; frozen-input.json 未附, 如实标注"
     }
   ]
 }

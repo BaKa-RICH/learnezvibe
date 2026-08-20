@@ -1,0 +1,29 @@
+commands:
+  - cmd: "python -c \"import os,sys;sys.exit(0 if os.path.exists('weekly-data.md') and os.path.getsize('weekly-data.md')>0 else 1)\""
+    exit_code: 0
+    summary: weekly-data.md exists and is non-empty
+    business_tests:
+      - acceptance: weekly-data.md 存在且内容非空
+        test: "weekly-data.md: source-of-truth existence and non-empty check"
+  - cmd: "python -c \"import sys;c=open('weekly-data.md',encoding='utf-8').read().strip().splitlines();sys.exit(0 if len(c)>=3 else 1)\""
+    exit_code: 0
+    summary: weekly-data.md has at least three lines and five weekly-data bullets
+    business_tests:
+      - acceptance: weekly-data.md 至少包含 3 条本周要点
+        test: "weekly-data.md: weekly-point count check"
+integration_gates:
+  - name: gate1
+    source_of_truth:
+      - weekly-data.md
+    delivery_goal: 本周数据已汇总到 weekly-data.md
+    commands:
+      - cmd: "python -c \"import os,sys;sys.exit(0 if os.path.exists('weekly-data.md') and os.path.getsize('weekly-data.md')>0 else 1)\""
+        exit_code: 0
+    metrics: {}
+    artifacts:
+      - weekly-data.md
+pr_base: null
+coverage: 100
+env_setup:
+  - Downloaded the four specified upstream issue attachments into an isolated local input directory.
+  - Ran the contract verification commands from the deliverable directory.

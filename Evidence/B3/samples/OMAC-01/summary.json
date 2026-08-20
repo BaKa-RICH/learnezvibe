@@ -1,0 +1,20 @@
+{
+  "sample": "OMAC-01",
+  "result": "collect DONE (write 进行中)",
+  "root_issue": "d7694427",
+  "collect": {
+    "issue": "0ac256e4",
+    "run": "cba6ee44",
+    "started": "09:20:25",
+    "completed": "09:26:45",
+    "msgs": 80,
+    "deliverable_sha256": "见文件 omac-deliverable-14caa2493ca7.md",
+    "fixture_hashes": {
+      "交接信": "a3553b02ce...",
+      "项目总纲": "17c5cb0d36...",
+      "B1": "40cb15e9ba...",
+      "B2": "9d744387dc..."
+    },
+    "note": "4 fixture 附件 SHA-256 与 frozen-input.json 完全一致; 未用 workdir 副本"
+  }
+}
